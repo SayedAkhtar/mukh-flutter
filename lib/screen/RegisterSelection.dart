@@ -53,7 +53,7 @@ class _RegisterSelectionState extends State<RegisterSelection> {
                     children: [
                       Expanded(
                           child: Container(
-                            height: _buttonWidth,
+                        height: _buttonWidth,
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
@@ -101,7 +101,6 @@ class _RegisterSelectionState extends State<RegisterSelection> {
                                   offset: Offset(0, 8),
                                   blurRadius: 20),
                             ],
-
                           ),
                           child: TextButton(
                             onPressed: () {},

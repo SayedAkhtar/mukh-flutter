@@ -5,8 +5,10 @@ import '../AppConstants/constant.dart';
 import 'ProfilepicWidget.dart';
 import 'StyledInput.dart';
 
-class DoctorProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
-  DoctorProfileAppBar({Key? key, this.doctorName="Your Name"}) : super(key: key);
+class DoctorProfileAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
+  DoctorProfileAppBar({Key? key, this.doctorName = "Your Name"})
+      : super(key: key);
   final doctorName;
 
   @override
@@ -21,7 +23,8 @@ class DoctorProfileAppBar extends StatelessWidget implements PreferredSizeWidget
           height: 210,
           width: Size.infinite.width,
           color: Constant.mainColor,
-          padding: const EdgeInsets.only(left: 18.0, top: 18.0, bottom: 5.0, right: 18.0),
+          padding: const EdgeInsets.only(
+              left: 18.0, top: 18.0, bottom: 5.0, right: 18.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -30,13 +33,16 @@ class DoctorProfileAppBar extends StatelessWidget implements PreferredSizeWidget
                 height: 40,
                 fit: BoxFit.cover,
               ),
-              const SizedBox(height: 15.0,),
+              const SizedBox(
+                height: 15.0,
+              ),
               Text(
                 "Hello, Dr. ${doctorName}",
                 style: const TextStyle(
                   fontSize: 25.0,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white, ),
+                  color: Colors.white,
+                ),
               ),
               const Text(
                 "What do you need ?",
@@ -45,8 +51,14 @@ class DoctorProfileAppBar extends StatelessWidget implements PreferredSizeWidget
                     fontWeight: FontWeight.normal,
                     color: Colors.white),
               ),
-              const SizedBox(height: 20.0,),
-              const StyledInput("Find a doctor or patient", icon: Icons.search_rounded,iconSize: 32.0,)
+              const SizedBox(
+                height: 20.0,
+              ),
+              const StyledInput(
+                "Find a doctor or patient",
+                icon: Icons.search_rounded,
+                iconSize: 32.0,
+              )
             ],
           ),
         ),
@@ -54,7 +66,4 @@ class DoctorProfileAppBar extends StatelessWidget implements PreferredSizeWidget
       ],
     );
   }
-
-
-
 }

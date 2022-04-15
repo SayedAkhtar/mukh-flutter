@@ -53,7 +53,10 @@ class CardWithButton extends StatelessWidget {
               right: 15,
               child: FloatingActionButton(
                 backgroundColor: Colors.white,
-                child: Icon(Icons.check, color: Constant.mainColor,),
+                child: Icon(
+                  Icons.check,
+                  color: Constant.mainColor,
+                ),
                 onPressed: () {},
               )),
           Positioned(

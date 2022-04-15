@@ -2,11 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SectionHeading extends StatelessWidget {
-
   final VoidCallback func;
   final String heading;
 
-  const SectionHeading(this.heading, this.func,{Key? key}) : super(key: key);
+  const SectionHeading(this.heading, this.func, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +26,7 @@ class SectionHeading extends StatelessWidget {
                   fontSize: 20.0,
                   color: Colors.black38,
                   fontWeight: FontWeight.bold,
-                  decoration: TextDecoration.underline
-              ),
+                  decoration: TextDecoration.underline),
             ),
           )
         ],

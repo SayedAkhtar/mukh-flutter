@@ -7,7 +7,9 @@ class CardWithDate extends StatelessWidget {
   final patientId;
   final name;
 
-  const CardWithDate(String this.name, String this.patientId, String this.date, {Key? key}) : super(key: key);
+  const CardWithDate(String this.name, String this.patientId, String this.date,
+      {Key? key})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,15 +32,16 @@ class CardWithDate extends StatelessWidget {
                 RichText(
                     text: TextSpan(
                         text: "${name} \n",
-                        style: const TextStyle(fontSize: 20.0, fontFamily: 'Sansation'),
+                        style: const TextStyle(
+                            fontSize: 20.0, fontFamily: 'Sansation'),
                         children: [
-                          TextSpan(
-                              text: "Patient Id: ${patientId}",
-                              style: const TextStyle(
-                                  fontSize: 12.0,
-                                  fontWeight: FontWeight.bold,
-                                  height: 1.5))
-                        ]))
+                      TextSpan(
+                          text: "Patient Id: ${patientId}",
+                          style: const TextStyle(
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.bold,
+                              height: 1.5))
+                    ]))
               ],
             ),
           ),
@@ -47,8 +50,7 @@ class CardWithDate extends StatelessWidget {
               width: 500.0,
               child: Container(
                 height: 50.0,
-                padding:
-                const EdgeInsets.symmetric(horizontal: 24.0),
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 decoration: const BoxDecoration(
                     color: Color.fromRGBO(255, 255, 255, 0.2),
                     borderRadius: BorderRadius.only(

@@ -93,7 +93,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {},
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    child: const Text('Sign In', style: TextStyle(fontSize: 20.0), textAlign: TextAlign.center),
+                    child: const Text('Sign In',
+                        style: TextStyle(fontSize: 20.0),
+                        textAlign: TextAlign.center),
                   ),
                   style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -129,45 +131,63 @@ class _LoginScreenState extends State<LoginScreen> {
                       fontWeight: FontWeight.bold,
                       color: Colors.black45),
                 ),
-                const SizedBox(height: 20,),
+                const SizedBox(
+                  height: 20,
+                ),
                 Container(
                   width: MediaQuery.of(context).size.width,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        width: MediaQuery.of(context).size.width/2 - 50,
+                        width: MediaQuery.of(context).size.width / 2 - 50,
                         child: ElevatedButton(
                           onPressed: () {},
-                          child: Image.asset('asset/google.png', height: 30.0,),
+                          child: Image.asset(
+                            'asset/google.png',
+                            height: 30.0,
+                          ),
                           style: ButtonStyle(
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(180.0),
-                                    side: BorderSide(color: Constant.mainColor, width: 2)
-                                  )),
-                              backgroundColor: MaterialStateProperty.all(Colors.white),
+                                      borderRadius:
+                                          BorderRadius.circular(180.0),
+                                      side: BorderSide(
+                                          color: Constant.mainColor,
+                                          width: 2))),
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.white),
                               foregroundColor:
-                              MaterialStateProperty.all(Colors.white),
+                                  MaterialStateProperty.all(Colors.white),
                               padding: MaterialStateProperty.all(
                                   const EdgeInsets.symmetric(vertical: 10.0))),
                         ),
                       ),
-                      const SizedBox(width: 20,),
+                      const SizedBox(
+                        width: 20,
+                      ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width/2 - 50,
+                        width: MediaQuery.of(context).size.width / 2 - 50,
                         child: ElevatedButton(
                           onPressed: () {},
-                          child: Image.asset('asset/linkedin.png', height: 30.0,),
+                          child: Image.asset(
+                            'asset/linkedin.png',
+                            height: 30.0,
+                          ),
                           style: ButtonStyle(
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(180.0),
-                                    side: BorderSide(color: Constant.mainColor, width: 2)
-                                  )),
-                              backgroundColor: MaterialStateProperty.all(Colors.white),
+                                      borderRadius:
+                                          BorderRadius.circular(180.0),
+                                      side: BorderSide(
+                                          color: Constant.mainColor,
+                                          width: 2))),
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.white),
                               foregroundColor:
-                              MaterialStateProperty.all(Colors.white),
+                                  MaterialStateProperty.all(Colors.white),
                               padding: MaterialStateProperty.all(
                                   const EdgeInsets.symmetric(vertical: 10.0))),
                         ),

@@ -11,8 +11,9 @@ class ReferStatus extends StatelessWidget {
       child: ListView.builder(
         itemCount: 10,
         itemBuilder: (ctx, index) {
-          return CardWithButton("Sayed Akhtar", "87655678", 'Wednesday', (){});
-      },),
+          return CardWithButton("Sayed Akhtar", "87655678", 'Wednesday', () {});
+        },
+      ),
     );
   }
 }

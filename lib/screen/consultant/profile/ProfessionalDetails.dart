@@ -5,14 +5,8 @@ class ProfessionalDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double _width = MediaQuery
-        .of(context)
-        .size
-        .width;
-    double _height = MediaQuery
-        .of(context)
-        .size
-        .height;
+    double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
     return Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: ListView.builder(
@@ -32,15 +26,19 @@ class ProfessionalDetails extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Text("Sayed", softWrap: true, style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black38),),
+                    child: Text(
+                      "Sayed",
+                      softWrap: true,
+                      style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black38),
+                    ),
                   ),
                 ],
               ),
             );
-          },)
-    );
+          },
+        ));
   }
 }

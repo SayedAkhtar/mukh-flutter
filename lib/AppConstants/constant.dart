@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Constant{
+class Constant {
   static Color mainColor = Color.fromRGBO(51, 134, 254, 1);
   static Color secondaryColor = Color.fromRGBO(122, 176, 254, 1);
 

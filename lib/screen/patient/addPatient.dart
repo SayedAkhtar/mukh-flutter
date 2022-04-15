@@ -27,43 +27,76 @@ class _AddPatientState extends State<AddPatient> {
         child: Form(
           child: Column(
             children: [
-              FormAddInput('First Name *', margin: EdgeInsets.only(bottom: 10),),
-              FormAddInput('Last Name *', margin: EdgeInsets.only(bottom: 10),),
-              FormAddInput('Contact Number *', margin: EdgeInsets.only(bottom: 10),),
-              FormAddInput('Alternate Number *', margin: EdgeInsets.only(bottom: 10),),
-              FormAddInput('Email Id *', margin: EdgeInsets.only(bottom: 10),),
-              Flexible(child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: (MediaQuery.of(context).size.width / 2) - 30.0,
-                      child: FormAddInput('DOB *', margin: EdgeInsets.only(bottom: 10,),)
-                  ),
-                  Container(
+              FormAddInput(
+                'First Name *',
+                margin: EdgeInsets.only(bottom: 10),
+              ),
+              FormAddInput(
+                'Last Name *',
+                margin: EdgeInsets.only(bottom: 10),
+              ),
+              FormAddInput(
+                'Contact Number *',
+                margin: EdgeInsets.only(bottom: 10),
+              ),
+              FormAddInput(
+                'Alternate Number *',
+                margin: EdgeInsets.only(bottom: 10),
+              ),
+              FormAddInput(
+                'Email Id *',
+                margin: EdgeInsets.only(bottom: 10),
+              ),
+              Flexible(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                        width: (MediaQuery.of(context).size.width / 2) - 30.0,
+                        child: FormAddInput(
+                          'DOB *',
+                          margin: EdgeInsets.only(
+                            bottom: 10,
+                          ),
+                        )),
+                    Container(
                       width: (MediaQuery.of(context).size.width / 2) - 30.0,
-                      child: FormAddInput('Age *', margin: EdgeInsets.only(bottom: 10,)
-                  ),),
-                ],
+                      child: FormAddInput('Age *',
+                          margin: EdgeInsets.only(
+                            bottom: 10,
+                          )),
+                    ),
+                  ],
+                ),
               ),
+              Flexible(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                        width: (MediaQuery.of(context).size.width / 2) - 30.0,
+                        child: FormAddInput(
+                          'Gender *',
+                          margin: EdgeInsets.only(
+                            bottom: 10,
+                          ),
+                        )),
+                    Container(
+                        width: (MediaQuery.of(context).size.width / 2) - 30.0,
+                        child: FormAddDropdown('B.G', dropdownValue, (True) {
+                          print("Down");
+                        })),
+                  ],
+                ),
               ),
-              Flexible(child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                      width: (MediaQuery.of(context).size.width / 2) - 30.0,
-                      child: FormAddInput('Gender *', margin: EdgeInsets.only(bottom: 10,),)
-                  ),
-                  Container(
-                    width: (MediaQuery.of(context).size.width / 2) - 30.0,
-                    child: FormAddDropdown('B.G', dropdownValue, (){
-                      print("Down");
-                    })),
-                ],
+              FormAddInput(
+                'Email Id *',
+                margin: EdgeInsets.only(bottom: 10),
               ),
+              FormAddInput(
+                'Email Id *',
+                margin: EdgeInsets.only(bottom: 10),
               ),
-              FormAddInput('Email Id *', margin: EdgeInsets.only(bottom: 10),),
-              FormAddInput('Email Id *', margin: EdgeInsets.only(bottom: 10),),
-
             ],
           ),
         ),
@@ -73,7 +106,8 @@ class _AddPatientState extends State<AddPatient> {
 }
 
 class FormAddInput extends StatelessWidget {
-  const FormAddInput(this.textLabel, {Key? key, this.icon, this.iconSize = 20, this.margin = EdgeInsets.zero})
+  const FormAddInput(this.textLabel,
+      {Key? key, this.icon, this.iconSize = 20, this.margin = EdgeInsets.zero})
       : super(key: key);
   final String textLabel;
   final IconData? icon;
@@ -108,8 +142,8 @@ class FormAddInput extends StatelessWidget {
 }
 
 class FormAddDropdown extends StatelessWidget {
-
-  const FormAddDropdown(this.textLabel, this.dropdown, this.onChanged, {Key? key, this.icon, this.iconSize = 20, this.margin = EdgeInsets.zero})
+  const FormAddDropdown(this.textLabel, this.dropdown, this.onChanged,
+      {Key? key, this.icon, this.iconSize = 20, this.margin = EdgeInsets.zero})
       : super(key: key);
   final String textLabel;
   final IconData? icon;

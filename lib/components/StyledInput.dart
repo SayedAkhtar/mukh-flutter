@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class StyledInput extends StatelessWidget {
-  const StyledInput(this.textLabel, {Key? key, this.icon, this.iconSize = 20}) : super(key: key);
+  const StyledInput(this.textLabel, {Key? key, this.icon, this.iconSize = 20})
+      : super(key: key);
   final String textLabel;
   final IconData? icon;
   final double iconSize;
@@ -11,8 +12,8 @@ class StyledInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-        prefixIcon: Icon(icon, size: iconSize,
-            color: Color.fromRGBO(122, 176, 254, 1)),
+        prefixIcon:
+            Icon(icon, size: iconSize, color: Color.fromRGBO(122, 176, 254, 1)),
         fillColor: Colors.white,
         filled: true,
         border: const OutlineInputBorder(

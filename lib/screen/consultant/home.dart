@@ -53,7 +53,11 @@ class _HomeState extends State<Home> {
                   height: 110,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    children: const [CardList("Fauzia Akhtar", "123457567"), CardList("Fauzia Akhtar", "123457567"), CardList("Fauzia Akhtar", "123457567")],
+                    children: const [
+                      CardList("Fauzia Akhtar", "123457567"),
+                      CardList("Fauzia Akhtar", "123457567"),
+                      CardList("Fauzia Akhtar", "123457567")
+                    ],
                   ),
                 ),
                 SectionHeading("Recently Contacted Doctors", () {

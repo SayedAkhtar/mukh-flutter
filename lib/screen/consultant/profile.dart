@@ -135,9 +135,16 @@ class _DoctorProfileState extends State<DoctorProfile>
           showSelectedLabels: false,
           showUnselectedLabels: false,
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.add_alert, size: 28,), label: ''),
-            BottomNavigationBarItem(icon: Icon(Icons.home, size: 28), label: ''),
-            BottomNavigationBarItem(icon: Icon(Icons.person_add_alt_1, size: 28), label: ''),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.add_alert,
+                  size: 28,
+                ),
+                label: ''),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home, size: 28), label: ''),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person_add_alt_1, size: 28), label: ''),
           ],
         ),
       ),

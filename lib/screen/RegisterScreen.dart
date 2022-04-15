@@ -47,23 +47,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                const StyledInput("First Name", icon: Icons.person,),
+                const StyledInput(
+                  "First Name",
+                  icon: Icons.person,
+                ),
                 const SizedBox(
                   height: 20,
                 ),
-                const StyledInput("Last Name", icon: Icons.person,),
+                const StyledInput(
+                  "Last Name",
+                  icon: Icons.person,
+                ),
                 const SizedBox(
                   height: 20,
                 ),
-                const StyledInput("Email", icon: Icons.email,),
+                const StyledInput(
+                  "Email",
+                  icon: Icons.email,
+                ),
                 const SizedBox(
                   height: 20,
                 ),
-                const StyledInput("Password", icon: Icons.lock,),
+                const StyledInput(
+                  "Password",
+                  icon: Icons.lock,
+                ),
                 const SizedBox(
                   height: 20,
                 ),
-                const StyledInput("Confirm Password", icon: Icons.check_circle,),
+                const StyledInput(
+                  "Confirm Password",
+                  icon: Icons.check_circle,
+                ),
                 const SizedBox(height: 25),
                 ElevatedButton(
                   onPressed: () {},

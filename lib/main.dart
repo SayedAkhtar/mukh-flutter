@@ -5,11 +5,12 @@ import 'package:mukh/screen/LoginScreen.dart';
 import 'package:mukh/screen/RegisterSelection.dart';
 import 'package:mukh/screen/consultant/profile.dart';
 import 'package:mukh/screen/patient/addPatient.dart';
+import 'package:mukh/screen/patient/profile.dart';
 
 void main() {
-  runApp(
-    const GetMaterialApp(home: MyApp(),)
-  );
+  runApp(const GetMaterialApp(
+    home: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -20,13 +21,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Sansation',
-        appBarTheme: AppBarTheme(
-          backgroundColor: Constant.mainColor
-        )
-      ),
-      home: AddPatient(),
+          primarySwatch: Colors.blue,
+          fontFamily: 'Sansation',
+          appBarTheme: AppBarTheme(backgroundColor: Constant.mainColor)),
+      home: PatientProfile(),
     );
   }
 }
