@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:get/get.dart';
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/components/CardList.dart';
 import 'package:mukh/components/CardWithDate.dart';
 import 'package:mukh/components/SectionHeading.dart';
+import 'package:mukh/screen/consultant/allDoctors.dart';
+import 'package:mukh/screen/patient/allPatients.dart';
 
 import '../../components/DoctorProfileAppBar.dart';
 
@@ -47,7 +50,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 SectionHeading("Recent Patient", () {
-                  print("Object");
+                  Get.to(AllPatients());
                 }),
                 Container(
                   height: 110,
@@ -61,7 +64,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 SectionHeading("Recently Contacted Doctors", () {
-                  print("Object");
+                  Get.to(AllDoctors());
                 }),
                 Container(
                   height: 110,

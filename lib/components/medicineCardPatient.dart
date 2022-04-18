@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mukh/AppConstants/constant.dart';
 
 class MedicineCardPatient extends StatelessWidget {
   const MedicineCardPatient(
@@ -21,7 +22,7 @@ class MedicineCardPatient extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 20.0),
         decoration: BoxDecoration(
-          color: isActive ? Colors.blue[300] : Colors.grey[300],
+          color: isActive ? Constant.secondaryColor : Colors.grey[300],
           borderRadius: BorderRadius.circular(20.0),
         ),
         height: 150,

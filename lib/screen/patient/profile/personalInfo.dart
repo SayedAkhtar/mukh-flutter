@@ -20,98 +20,136 @@ class PersonalInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 'First Name',
                 style: _titles(),
               ),
               Text(
-                'Last Name',
-                style: _titles(),
-              ),
-              Text(
-                'Contact Number',
-                style: _titles(),
-              ),
-              Text(
-                'Alt. Contact Number',
-                style: _titles(),
-              ),
-              Text(
-                'Email',
-                style: _titles(),
-              ),
-              Text(
-                'D. O. B.',
-                style: _titles(),
-              ),
-              Text(
-                'Age',
-                style: _titles(),
-              ),
-              Text(
-                'Gender',
-                style: _titles(),
-              ),
-              Text(
-                'B. G.',
-                style: _titles(),
-              ),
-              Text(
-                'Address',
-                style: _titles(),
+                'Shourya',
+                style: _details(),
               ),
             ],
           ),
-          const SizedBox(
-            width: 40,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Shourya',
-                style: _details(),
+                'Last Name',
+                style: _titles(),
               ),
               Text(
                 'Shikhar',
                 style: _details(),
               ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Contact Number',
+                style: _titles(),
+              ),
               Text(
                 '1234567890',
                 style: _details(),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Alt. Contact Number',
+                style: _titles(),
               ),
               Text(
                 '0987654321',
                 style: _details(),
               ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Email',
+                style: _titles(),
+              ),
               Text(
                 'test@xyz.com',
                 style: _details(),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'D. O. B.',
+                style: _titles(),
               ),
               Text(
                 '29-02-1947',
                 style: _details(),
               ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Age',
+                style: _titles(),
+              ),
               Text(
                 '87',
                 style: _details(),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Gender',
+                style: _titles(),
               ),
               Text(
                 'Male',
                 style: _details(),
               ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'B. G.',
+                style: _titles(),
+              ),
               Text(
                 'B +ve',
                 style: _details(),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Address',
+                style: _titles(),
               ),
               Text(
                 '221B Baker Street',
