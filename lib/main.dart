@@ -4,10 +4,14 @@ import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/screen/LoginScreen.dart';
 import 'package:mukh/screen/RegisterSelection.dart';
 import 'package:mukh/screen/consultant/home.dart';
+import 'package:mukh/screen/consultant/landingPage.dart';
 import 'package:mukh/screen/consultant/profile.dart';
 import 'package:mukh/screen/patient/addPatient.dart';
+import 'package:mukh/screen/patient/editPatientDetails.dart';
 import 'package:mukh/screen/patient/home.dart';
 import 'package:mukh/screen/patient/profile.dart';
+
+import 'screen/editPersonalInformation.dart';
 
 void main() {
   runApp(const GetMaterialApp(
@@ -26,7 +30,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           fontFamily: 'Sansation',
           appBarTheme: AppBarTheme(backgroundColor: Constant.mainColor)),
-      home: Home(),
+      home: EditPersonalDetails(),
     );
   }
 }

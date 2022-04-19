@@ -80,13 +80,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 GestureDetector(
                   onTap: () {},
                   child: SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      child: const Text(
-                        'Forgot Password ?',
-                        textAlign: TextAlign.right,
-                        textWidthBasis: TextWidthBasis.parent,
-                        style: TextStyle(height: 2.5),
-                      )),
+                    width: MediaQuery.of(context).size.width,
+                    child: const Text(
+                      'Forgot Password ?',
+                      textAlign: TextAlign.right,
+                      textWidthBasis: TextWidthBasis.parent,
+                      style: TextStyle(height: 2.5),
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
@@ -118,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                       TextSpan(
                           text: 'Sign Up',
-                          style: TextStyle(color: Constant.mainColor))
+                          style: TextStyle(color: Constant.mainColor)),
                     ])),
                 const SizedBox(height: 10),
                 const Text(

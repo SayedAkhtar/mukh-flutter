@@ -18,10 +18,10 @@ class _AllPatientsState extends State<AllPatients> {
     return SafeArea(
       child: Scaffold(
           appBar: PreferredSize(
-            preferredSize: Size(_width, 60),
+            preferredSize: Size(_width, 80),
             child: Container(
               width: _width,
-              height: 60,
+              height: 80,
               decoration: BoxDecoration(
                 color: Constant.mainColor,
               ),
@@ -74,7 +74,7 @@ class _AllPatientsState extends State<AllPatients> {
                                     Text('Patient ID: 12345'),
                                   ]),
                               Padding(
-                                padding: EdgeInsets.only(left: _width * 0.4),
+                                padding: EdgeInsets.only(left: _width * 0.3),
                                 child: InkWell(
                                   child: Container(
                                     padding: const EdgeInsets.all(5.0),

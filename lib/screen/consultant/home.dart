@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:get/get.dart';
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/components/CardList.dart';
@@ -10,6 +8,7 @@ import 'package:mukh/screen/consultant/allDoctors.dart';
 import 'package:mukh/screen/patient/allPatients.dart';
 
 import '../../components/DoctorProfileAppBar.dart';
+import '../notification.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);

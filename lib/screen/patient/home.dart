@@ -3,7 +3,7 @@ import 'package:mukh/screen/patient/profile.dart';
 
 import '../../AppConstants/constant.dart';
 import 'addPatient.dart';
-import 'notification.dart';
+import '../notification.dart';
 
 class PatientHome extends StatefulWidget {
   const PatientHome({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class _PatientHomeState extends State<PatientHome> {
   int _selectedTab = 1;
 
   List<Widget> _tabs = [
-    PatientNotifications(),
+    Notifications(),
     PatientProfile(),
     AddPatient(),
   ];

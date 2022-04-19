@@ -18,10 +18,10 @@ class _AllDoctorsState extends State<AllDoctors> {
     return SafeArea(
       child: Scaffold(
           appBar: PreferredSize(
-            preferredSize: Size(_width, 60),
+            preferredSize: Size(_width, 80),
             child: Container(
               width: _width,
-              height: 60,
+              height: 80,
               decoration: BoxDecoration(
                 color: Constant.mainColor,
               ),
