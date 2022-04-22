@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mukh/AppConstants/constant.dart';
+import 'package:mukh/screen/RegisterScreen.dart';
+import 'package:mukh/screen/RegisterSelection.dart';
 import '../AppConstants/constant.dart';
+import '../utils/login.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -11,6 +15,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  late final TextEditingController _email, _password;
+
+  @override
+  void initState() {
+    super.initState();
+    _email = TextEditingController();
+    _password = TextEditingController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -48,7 +61,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                const TextField(
+                TextField(
+                  controller: _email,
+                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.email,
                         color: Color.fromRGBO(122, 176, 254, 1)),
@@ -64,7 +79,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                const TextField(
+                TextField(
+                  controller: _password,
+                  obscureText: true,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.lock,
                         color: Color.fromRGBO(122, 176, 254, 1)),
@@ -78,7 +95,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () async {
+                    // await login(context, _email.text, _password.text);
+                  },
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: const Text(
@@ -91,7 +110,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    int responseCode =
+                        await login(context, _email.text, _password.text);
+                    if (responseCode == 200) {
+                      Get.to(() => RegisterScreen());
+                    } else {
+                      Get.snackbar('Error!',
+                          'Invalid Credentials or Something went wrong',
+                          snackPosition: SnackPosition.BOTTOM);
+                    }
+                  },
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: const Text('Sign In',
@@ -109,18 +138,21 @@ class _LoginScreenState extends State<LoginScreen> {
                           const EdgeInsets.symmetric(vertical: 20.0))),
                 ),
                 const SizedBox(height: 10),
-                RichText(
-                    text: TextSpan(
-                        text: "Don't have an account? ",
-                        style: GoogleFonts.sansita(
-                            fontSize: 24.0,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                        children: [
-                      TextSpan(
-                          text: 'Sign Up',
-                          style: TextStyle(color: Constant.mainColor)),
-                    ])),
+                GestureDetector(
+                  onTap: () => Get.to(RegisterScreen()),
+                  child: RichText(
+                      text: TextSpan(
+                          text: "Don't have an account? ",
+                          style: GoogleFonts.sansita(
+                              fontSize: 24.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                          children: [
+                        TextSpan(
+                            text: 'Sign Up',
+                            style: TextStyle(color: Constant.mainColor)),
+                      ])),
+                ),
                 const SizedBox(height: 10),
                 const Text(
                   'or SignIn With',

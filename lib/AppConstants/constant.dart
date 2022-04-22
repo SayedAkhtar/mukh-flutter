@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class Constant {
   static Color mainColor = Color.fromRGBO(51, 134, 254, 1);
   static Color secondaryColor = Color.fromRGBO(122, 176, 254, 1);
+  static String baseUrl = 'http://159.65.152.38/';
 
   static Color getColor(Set<MaterialState> states) {
     const Set<MaterialState> interactiveStates = <MaterialState>{

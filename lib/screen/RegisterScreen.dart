@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/components/StyledInput.dart';
+import 'package:mukh/screen/RegisterSelection.dart';
 import '../AppConstants/constant.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -13,6 +15,22 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  late final TextEditingController _email,
+      _password,
+      _confirmPassword,
+      _firstName,
+      _lastName;
+
+  @override
+  void initState() {
+    super.initState();
+    _email = TextEditingController();
+    _password = TextEditingController();
+    _confirmPassword = TextEditingController();
+    _firstName = TextEditingController();
+    _lastName = TextEditingController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -47,41 +65,62 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                const StyledInput(
+                StyledInput(
                   "First Name",
+                  controller: _firstName,
                   icon: Icons.person,
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                const StyledInput(
+                StyledInput(
                   "Last Name",
+                  controller: _lastName,
                   icon: Icons.person,
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                const StyledInput(
+                StyledInput(
                   "Email",
+                  controller: _email,
                   icon: Icons.email,
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                const StyledInput(
+                StyledInput(
                   "Password",
+                  controller: _password,
+                  isPassword: true,
                   icon: Icons.lock,
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                const StyledInput(
+                StyledInput(
                   "Confirm Password",
+                  controller: _confirmPassword,
+                  isPassword: true,
                   icon: Icons.check_circle,
                 ),
                 const SizedBox(height: 25),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (_password.text != _confirmPassword.text) {
+                      Get.snackbar(
+                        'Passwords don\'t match!',
+                        'Please try again.',
+                        snackPosition: SnackPosition.BOTTOM,
+                      );
+                    } else {
+                      Get.to(() => RegisterSelection(
+                          firstName: _firstName.text,
+                          lastName: _lastName.text,
+                          email: _email.text,
+                          password: _password.text));
+                    }
+                  },
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: const Text('Sign Up',

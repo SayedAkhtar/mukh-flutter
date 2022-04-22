@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           fontFamily: 'Sansation',
           appBarTheme: AppBarTheme(backgroundColor: Constant.mainColor)),
-      home: EditPersonalDetails(),
+      home: LoginScreen(),
     );
   }
 }

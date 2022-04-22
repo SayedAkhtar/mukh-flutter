@@ -1,11 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mukh/screen/consultant/landingPage.dart';
+import 'package:mukh/utils/signup.dart';
 
 import '../AppConstants/constant.dart';
 
 class RegisterSelection extends StatefulWidget {
-  const RegisterSelection({Key? key}) : super(key: key);
+  const RegisterSelection(
+      {Key? key,
+      required this.firstName,
+      required this.lastName,
+      required this.email,
+      required this.password})
+      : super(key: key);
+
+  final String firstName, lastName, email, password;
 
   @override
   State<RegisterSelection> createState() => _RegisterSelectionState();
@@ -70,7 +80,19 @@ class _RegisterSelectionState extends State<RegisterSelection> {
                           ],
                         ),
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            final responseCode = await signup(
+                                context,
+                                widget.email,
+                                widget.password,
+                                'specialist',
+                                widget.firstName,
+                                widget.lastName);
+
+                            if (responseCode == 201) {
+                              Get.offAll(() => DoctorLandingPage());
+                            }
+                          },
                           child: const Center(
                             child: Text(
                               'An Expert Consultant',
@@ -103,7 +125,18 @@ class _RegisterSelectionState extends State<RegisterSelection> {
                             ],
                           ),
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              final responseCode = await signup(
+                                  context,
+                                  widget.email,
+                                  widget.password,
+                                  'rural',
+                                  widget.firstName,
+                                  widget.lastName);
+                              if (responseCode == 201) {
+                                Get.offAll(() => DoctorLandingPage());
+                              }
+                            },
                             child: const Center(
                               child: Text(
                                 'A Rural Doctor',
