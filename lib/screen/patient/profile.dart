@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:mukh/components/patientOptionsDialog.dart';
-import 'package:mukh/screen/patient/editPatientDetails.dart';
+import 'package:mukh/screen/consultant/editDetailsTabs.dart';
 import 'package:mukh/screen/patient/profile/personalInfo.dart';
 import 'package:mukh/screen/patient/profile/dentalHistory.dart';
 import 'package:mukh/screen/patient/profile/docReview.dart';

@@ -56,10 +56,10 @@ class _AllPatientsState extends State<AllPatients> {
               future: getAllPatients(_index),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  final doctors = (snapshot.data as Map)["doctors_data"];
+                  final patients = (snapshot.data as Map)["patients_data"];
                   int _count = (snapshot.data as Map)["total_pages"];
 
-                  var data = (doctors as List<Patient>).toList();
+                  var data = (patients as List<Patient>).toList();
 
                   return Column(
                     children: [

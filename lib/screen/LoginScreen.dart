@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/screen/RegisterScreen.dart';
 import 'package:mukh/screen/RegisterSelection.dart';
+import 'package:mukh/screen/consultant/landingPage.dart';
 import '../AppConstants/constant.dart';
 import '../utils/login.dart';
 
@@ -114,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     int responseCode =
                         await login(context, _email.text, _password.text);
                     if (responseCode == 200) {
-                      Get.to(() => RegisterScreen());
+                      Get.to(() => DoctorLandingPage());
                     } else {
                       Get.snackbar('Error!',
                           'Invalid Credentials or Something went wrong',

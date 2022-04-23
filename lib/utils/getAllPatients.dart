@@ -43,7 +43,7 @@ Future<Map> getAllPatients(int index) async {
       patients.add(_patient);
     }
 
-    return {"total_pages": result['last_page'], "doctors_data": patients};
+    return {"total_pages": result['last_page'], "patients_data": patients};
   } else {
     print(response.body);
     var errorMessage = json.decode(response.body);

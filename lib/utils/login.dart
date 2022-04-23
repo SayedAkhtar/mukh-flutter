@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:mukh/utils/storeAccountDetails.dart';
 
 Future<int> login(BuildContext context, String email, String pass) async {
-  print(email);
   final response = await http.post(
     Uri.parse(Constant.baseUrl + 'api/login'),
     headers: {
@@ -19,7 +19,9 @@ Future<int> login(BuildContext context, String email, String pass) async {
     var result = json.decode(response.body);
     String token = result['token'];
     final storage = new FlutterSecureStorage();
-    await storage.write(key: result['token'], value: token);
+    await storage.write(key: 'token', value: token);
+    await Account.instance.storeAccountDetails(result['user']);
+    await storage.read(key: 'token');
     return response.statusCode;
   } else {
     return response.statusCode;

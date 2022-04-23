@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mukh/screen/patient/editPatientDetails.dart';
+import 'package:mukh/screen/consultant/editDetailsTabs.dart';
 
 Future<void> getDialog() async {
   TextStyle _textStyle = TextStyle(
@@ -16,7 +16,7 @@ Future<void> getDialog() async {
     content: Column(children: [
       TextButton(
           onPressed: () {
-            Get.to(EditPatientDetails());
+            Get.to(EditDetailsTabs());
           },
           child: Text(
             'Edit Details',

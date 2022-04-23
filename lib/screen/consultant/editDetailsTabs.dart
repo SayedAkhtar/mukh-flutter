@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:mukh/components/patientDetailsEditTab.dart';
+import 'package:mukh/components/detailsEditTab.dart';
 
 import '../../AppConstants/constant.dart';
 
-class EditPatientDetails extends StatefulWidget {
-  const EditPatientDetails({Key? key}) : super(key: key);
+class EditDetailsTabs extends StatefulWidget {
+  const EditDetailsTabs({Key? key}) : super(key: key);
 
   @override
-  State<EditPatientDetails> createState() => _EditPatientDetailsState();
+  State<EditDetailsTabs> createState() => _EditPatientDetailsState();
 }
 
-class _EditPatientDetailsState extends State<EditPatientDetails> {
+class _EditPatientDetailsState extends State<EditDetailsTabs> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -93,14 +93,14 @@ class _EditPatientDetailsState extends State<EditPatientDetails> {
               children: [
                 InkWell(
                   onTap: () {},
-                  child: PatientDetailsEditTab(
+                  child: DetailsEditTab(
                       EditTabName: 'Personal Information',
                       icon: Icon(Icons.person, color: Colors.white)),
                 ),
                 InkWell(
                   onTap: () {},
-                  child: PatientDetailsEditTab(
-                      EditTabName: 'Upload Medical Details',
+                  child: DetailsEditTab(
+                      EditTabName: 'Professional Details',
                       icon: Icon(Icons.medical_services, color: Colors.white)),
                 ),
               ],
@@ -112,33 +112,33 @@ class _EditPatientDetailsState extends State<EditPatientDetails> {
                 children: [
                   InkWell(
                     onTap: () {},
-                    child: PatientDetailsEditTab(
-                        EditTabName: 'Update New Medicines',
+                    child: DetailsEditTab(
+                        EditTabName: 'My referred Patients',
                         icon: Icon(Icons.medication, color: Colors.white)),
                   ),
                   InkWell(
                     onTap: () {},
-                    child: PatientDetailsEditTab(
-                        EditTabName: 'Upload Dental Records',
+                    child: DetailsEditTab(
+                        EditTabName: 'Check Availability',
                         icon: Icon(Icons.face, color: Colors.white)),
                   ),
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    child: PatientDetailsEditTab(
-                        EditTabName: 'Others',
-                        icon: Icon(Icons.window, color: Colors.white)),
-                  ),
-                ],
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(bottom: 20.0),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //     children: [
+            //       InkWell(
+            //         onTap: () {},
+            //         child: DetailsEditTab(
+            //             EditTabName: 'Others',
+            //             icon: Icon(Icons.window, color: Colors.white)),
+            //       ),
+            //     ],
+            //   ),
+            // ),
           ],
         ),
       ),

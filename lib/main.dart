@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/splash.dart';
 
+import 'screen/LoginScreen.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const GetMaterialApp(

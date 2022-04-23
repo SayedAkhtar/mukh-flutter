@@ -3,10 +3,14 @@ import 'package:get/get.dart';
 import 'package:mukh/components/CardList.dart';
 import 'package:mukh/components/CardWithDate.dart';
 import 'package:mukh/components/SectionHeading.dart';
+import 'package:mukh/models/doctor.dart';
 import 'package:mukh/screen/consultant/allDoctors.dart';
 import 'package:mukh/screen/consultant/allPatients.dart';
 
 import '../../components/DoctorProfileAppBar.dart';
+import '../../models/patient.dart';
+import '../../utils/getAllDoctors.dart';
+import '../../utils/getAllPatients.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -51,13 +55,29 @@ class _HomeState extends State<Home> {
                 }),
                 Container(
                   height: 110,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: const [
-                      CardList("Fauzia Akhtar", "123457567"),
-                      CardList("Fauzia Akhtar", "123457567"),
-                      CardList("Fauzia Akhtar", "123457567")
-                    ],
+                  child: FutureBuilder(
+                    future: getAllPatients(1),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        final patients =
+                            (snapshot.data as Map)["patients_data"];
+                        if (patients == null) return SizedBox.shrink();
+                        var data = (patients as List<Patient>).toList();
+                        return ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: data.length > 3 ? 3 : data.length,
+                          itemBuilder: (context, i) {
+                            return CardList(
+                                data[i].firstName + ' ' + data[i].lastName,
+                                data[i].id);
+                          },
+                        );
+                      } else {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    },
                   ),
                 ),
                 SectionHeading("Recently Contacted Doctors", () {
@@ -65,9 +85,32 @@ class _HomeState extends State<Home> {
                 }),
                 Container(
                   height: 110,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: const [CardList("Fauzia Akhtar", "123457567")],
+                  child: FutureBuilder(
+                    future: getAllDoctors(1),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        final doctors = (snapshot.data as Map)["doctors_data"];
+                        if (doctors == null) return SizedBox.shrink();
+                        var data = (doctors as List<Doctor>).toList();
+
+                        return ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: data.length > 3 ? 3 : data.length,
+                          itemBuilder: (context, i) {
+                            return CardList(
+                                'Dr. ' +
+                                    data[i].firstName +
+                                    ' ' +
+                                    data[i].lastName,
+                                data[i].id);
+                          },
+                        );
+                      } else {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    },
                   ),
                 )
               ],

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/components/StyledInput.dart';
+import 'package:mukh/screen/LoginScreen.dart';
 import 'package:mukh/screen/RegisterSelection.dart';
 import '../AppConstants/constant.dart';
 
@@ -113,6 +114,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         'Please try again.',
                         snackPosition: SnackPosition.BOTTOM,
                       );
+                    } else if (_password.text == '') {
+                      Get.snackbar(
+                        'Password cannot be empty!',
+                        'Please try again.',
+                        snackPosition: SnackPosition.BOTTOM,
+                      );
                     } else {
                       Get.to(() => RegisterSelection(
                           firstName: _firstName.text,
@@ -138,18 +145,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           const EdgeInsets.symmetric(vertical: 20.0))),
                 ),
                 const SizedBox(height: 10),
-                RichText(
-                    text: TextSpan(
-                        text: "Already have an account ? ",
-                        style: GoogleFonts.sansita(
-                            fontSize: 24.0,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                        children: [
-                      TextSpan(
-                          text: 'Sign In',
-                          style: TextStyle(color: Constant.mainColor))
-                    ])),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => LoginScreen());
+                  },
+                  child: RichText(
+                      text: TextSpan(
+                          text: "Already have an account ? ",
+                          style: GoogleFonts.sansita(
+                              fontSize: 24.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                          children: [
+                        TextSpan(
+                            text: 'Sign In',
+                            style: TextStyle(color: Constant.mainColor))
+                      ])),
+                ),
                 const SizedBox(height: 10),
                 const Text(
                   'or SignIn With',

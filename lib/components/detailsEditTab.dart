@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mukh/AppConstants/constant.dart';
 
-class PatientDetailsEditTab extends StatelessWidget {
-  PatientDetailsEditTab(
+class DetailsEditTab extends StatelessWidget {
+  DetailsEditTab(
       {Key? key,
       this.icon = const Icon(Icons.settings, color: Colors.white),
       required this.EditTabName})

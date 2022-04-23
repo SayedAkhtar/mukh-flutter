@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mukh/screen/consultant/editDetailsTabs.dart';
 
 import '../AppConstants/constant.dart';
 import 'ProfilepicWidget.dart';
@@ -62,7 +64,14 @@ class DoctorProfileAppBar extends StatelessWidget
             ],
           ),
         ),
-        Positioned(top: -130, right: -130, child: ProfilepicWidget()),
+        Positioned(
+            top: -130,
+            right: -130,
+            child: GestureDetector(
+                onTap: () {
+                  Get.to(() => EditDetailsTabs());
+                },
+                child: ProfilepicWidget())),
       ],
     );
   }

@@ -37,7 +37,7 @@ class CardList extends StatelessWidget {
                             color: Constant.mainColor),
                         children: [
                       TextSpan(
-                          text: "Patient Id: ${patientId}",
+                          text: "ID: ${patientId}",
                           style: const TextStyle(
                               fontSize: 12.0,
                               fontWeight: FontWeight.bold,
