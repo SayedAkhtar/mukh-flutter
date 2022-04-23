@@ -51,7 +51,18 @@ class Account {
 
     final id = await db.insert(account, AccountFields.toJson(result));
     List<Map> list = await db.rawQuery('''SELECT * FROM Account''');
+  }
 
-    print(list);
+  Future<List<Map>> getAccDetails() async {
+    var databasesPath = await getDatabasesPath();
+    String path = join(databasesPath, 'mukh.db');
+    Database db = await openDatabase(
+      path,
+      version: 1,
+    );
+
+    List<Map> list = await db.rawQuery('''SELECT * FROM Account''');
+    await db.close();
+    return list;
   }
 }
