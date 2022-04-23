@@ -13,14 +13,14 @@ class DoctorProfileAppBar extends StatelessWidget
 
   @override
   // TODO: implement preferredSize
-  final Size preferredSize = Size(double.infinity, 210.0);
+  final Size preferredSize = Size(double.infinity, 220.0);
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Container(
-          height: 210,
+          height: 220,
           width: Size.infinite.width,
           color: Constant.mainColor,
           padding: const EdgeInsets.only(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mukh/screen/consultant/home.dart';
 
 import '../notification.dart';
-import '../patient/addPatient.dart';
+import 'addPatient.dart';
 
 class DoctorLandingPage extends StatefulWidget {
   const DoctorLandingPage({Key? key, this.ifConsultant = true})

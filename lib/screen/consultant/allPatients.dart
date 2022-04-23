@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mukh/AppConstants/constant.dart';
-import 'package:mukh/models/doctor.dart';
-import 'package:mukh/utils/getAllDoctors.dart';
+import 'package:mukh/models/patient.dart';
 
 import '../../components/StyledInput.dart';
-import '../../models/doctor.dart';
+import '../../utils/getAllPatients.dart';
 
-class AllDoctors extends StatefulWidget {
-  const AllDoctors({Key? key}) : super(key: key);
+class AllPatients extends StatefulWidget {
+  const AllPatients({Key? key}) : super(key: key);
 
   @override
-  State<AllDoctors> createState() => _AllDoctorsState();
+  State<AllPatients> createState() => _AllPatientsState();
 }
 
-class _AllDoctorsState extends State<AllDoctors> {
+class _AllPatientsState extends State<AllPatients> {
   int _index = 1;
   @override
   Widget build(BuildContext context) {
@@ -41,7 +40,7 @@ class _AllDoctorsState extends State<AllDoctors> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                       child: StyledInput(
-                        "Find a Doctor",
+                        "Find a Patient",
                         icon: Icons.search_rounded,
                         iconSize: 28.0,
                       ),
@@ -54,13 +53,13 @@ class _AllDoctorsState extends State<AllDoctors> {
           body: Padding(
             padding: const EdgeInsets.only(bottom: 5.0),
             child: FutureBuilder(
-              future: getAllDoctors(_index),
+              future: getAllPatients(_index),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   final doctors = (snapshot.data as Map)["doctors_data"];
                   int _count = (snapshot.data as Map)["total_pages"];
 
-                  var data = (doctors as List<Doctor>).toList();
+                  var data = (doctors as List<Patient>).toList();
 
                   return Column(
                     children: [

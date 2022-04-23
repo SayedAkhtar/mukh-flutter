@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/components/CardList.dart';
 import 'package:mukh/components/CardWithDate.dart';
 import 'package:mukh/components/SectionHeading.dart';
 import 'package:mukh/screen/consultant/allDoctors.dart';
-import 'package:mukh/screen/patient/allPatients.dart';
+import 'package:mukh/screen/consultant/allPatients.dart';
 
 import '../../components/DoctorProfileAppBar.dart';
-import '../notification.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -49,7 +47,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 SectionHeading("Recent Patient", () {
-                  Get.to(AllPatients());
+                  Get.to(() => AllPatients());
                 }),
                 Container(
                   height: 110,
@@ -63,7 +61,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 SectionHeading("Recently Contacted Doctors", () {
-                  Get.to(AllDoctors());
+                  Get.to(() => AllDoctors());
                 }),
                 Container(
                   height: 110,

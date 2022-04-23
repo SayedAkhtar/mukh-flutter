@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mukh/screen/patient/profile.dart';
 
 import '../../AppConstants/constant.dart';
-import 'addPatient.dart';
+import '../consultant/addPatient.dart';
 import '../notification.dart';
 
 class PatientHome extends StatefulWidget {
