@@ -115,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     int responseCode =
                         await login(context, _email.text, _password.text);
                     if (responseCode == 200) {
-                      Get.to(() => DoctorLandingPage());
+                      Get.off(() => DoctorLandingPage());
                     } else {
                       Get.snackbar('Error!',
                           'Invalid Credentials or Something went wrong',

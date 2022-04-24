@@ -97,7 +97,7 @@ class _RegisterSelectionState extends State<RegisterSelection> {
                             child: Text(
                               'An Expert Consultant',
                               style: TextStyle(
-                                  color: Colors.black, fontSize: 28.0),
+                                  color: Colors.black, fontSize: 24.0),
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -141,7 +141,7 @@ class _RegisterSelectionState extends State<RegisterSelection> {
                               child: Text(
                                 'A Rural Doctor',
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 28.0),
+                                    color: Colors.black, fontSize: 24.0),
                                 textAlign: TextAlign.center,
                               ),
                             ),

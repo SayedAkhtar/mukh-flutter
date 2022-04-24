@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+import 'storeAccountDetails.dart';
+
 Future<int> signup(BuildContext context, String email, String pass, String type,
     String firstName, String lastName) async {
   final response = await http.post(
@@ -27,6 +29,7 @@ Future<int> signup(BuildContext context, String email, String pass, String type,
     String token = result['token'];
     final storage = new FlutterSecureStorage();
     await storage.write(key: 'token', value: token);
+    await Account.instance.storeAccountDetails(result['user']);
     return response.statusCode;
   } else {
     var errorMessage = json.decode(response.body);

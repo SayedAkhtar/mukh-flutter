@@ -62,7 +62,7 @@ class _EditPatientDetailsState extends State<EditDetailsTabs> {
                           children: [
                             Text(
                                 (snapshot.data as List<Map>)[0]['first_name'] +
-                                    ' ' +
+                                    '\n' +
                                     (snapshot.data as List<Map>)[0]
                                         ['last_name'],
                                 style: TextStyle(
@@ -103,7 +103,7 @@ class _EditPatientDetailsState extends State<EditDetailsTabs> {
                     children: [
                       InkWell(
                         onTap: () {
-                          Get.to(() => DoctorProfile(
+                          Get.off(() => DoctorProfile(
                                 index: 0,
                               ));
                         },
@@ -113,7 +113,7 @@ class _EditPatientDetailsState extends State<EditDetailsTabs> {
                       ),
                       InkWell(
                         onTap: () {
-                          Get.to(() => DoctorProfile(
+                          Get.off(() => DoctorProfile(
                                 index: 1,
                               ));
                         },
@@ -131,7 +131,7 @@ class _EditPatientDetailsState extends State<EditDetailsTabs> {
                       children: [
                         InkWell(
                           onTap: () {
-                            Get.to(() => DoctorProfile(
+                            Get.off(() => DoctorProfile(
                                   index: 2,
                                 ));
                           },
@@ -142,7 +142,7 @@ class _EditPatientDetailsState extends State<EditDetailsTabs> {
                         ),
                         InkWell(
                           onTap: () {
-                            Get.to(() => DoctorProfile(
+                            Get.off(() => DoctorProfile(
                                   index: 3,
                                 ));
                           },

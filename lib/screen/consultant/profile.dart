@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mukh/AppConstants/constant.dart';
+import 'package:mukh/screen/consultant/editDetailsTabs.dart';
+import 'package:mukh/screen/consultant/editScreens/editPersonalInformation.dart';
+import 'package:mukh/screen/consultant/editScreens/editProfessionalDetails.dart';
 import 'package:mukh/screen/consultant/profile/Availability.dart';
 import 'package:mukh/screen/consultant/profile/PersonalInformation.dart';
 import 'package:mukh/screen/consultant/profile/ProfessionalDetails.dart';
@@ -53,7 +56,7 @@ class _DoctorProfileState extends State<DoctorProfile>
                         children: [
                           IconButton(
                               onPressed: () {
-                                Get.back();
+                                Get.off(() => EditDetailsTabs());
                               },
                               icon: Icon(
                                 Icons.arrow_back,
@@ -61,9 +64,23 @@ class _DoctorProfileState extends State<DoctorProfile>
                                 color: Constant.secondaryColor,
                               )),
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                if (_tabController!.index == 0) {
+                                  Get.off(() => EditPersonalInformation(
+                                      doctor: (snapshot.data
+                                          as Map)['doctors_data']));
+                                } else if (_tabController!.index == 1) {
+                                  String id =
+                                      (snapshot.data as Map)['doctors_data'].id;
+                                  Map profDetails = (snapshot.data
+                                      as Map)['professional_details'];
+                                  profDetails['id'] = id;
+                                  Get.off(() => EditProfessionalDetails(
+                                      profDetails: profDetails));
+                                }
+                              },
                               icon: Icon(
-                                Icons.list_rounded,
+                                Icons.edit,
                                 size: 30.0,
                                 color: Constant.secondaryColor,
                               )),
@@ -87,7 +104,7 @@ class _DoctorProfileState extends State<DoctorProfile>
                               Text(
                                   (snapshot.data as Map)['doctors_data']
                                           .firstName +
-                                      ' ' +
+                                      '\n' +
                                       (snapshot.data as Map)['doctors_data']
                                           .lastName,
                                   style: TextStyle(
@@ -150,9 +167,13 @@ class _DoctorProfileState extends State<DoctorProfile>
                   PersonalInformation(
                     doctor: (snapshot.data as Map)['doctors_data'],
                   ),
-                  ProfessionalDetails(),
+                  ProfessionalDetails(
+                      profDetails:
+                          (snapshot.data as Map)['professional_details']),
                   ReferStatus(),
-                  Availability(),
+                  Availability(
+                      profDetails:
+                          (snapshot.data as Map)['professional_details']),
                 ],
               ),
               // bottomNavigationBar: BottomNavigationBar(

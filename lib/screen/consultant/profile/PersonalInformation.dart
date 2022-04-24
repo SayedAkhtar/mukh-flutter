@@ -32,13 +32,15 @@ class PersonalInformation extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Text(
-                      doctor.firstName,
-                      softWrap: true,
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black38),
+                    child: Flexible(
+                      child: Text(
+                        doctor.firstName,
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
                     ),
                   ),
                 ],
@@ -58,13 +60,15 @@ class PersonalInformation extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Text(
-                      doctor.lastName,
-                      softWrap: true,
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black38),
+                    child: Flexible(
+                      child: Text(
+                        doctor.lastName,
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
                     ),
                   ),
                 ],
@@ -110,13 +114,15 @@ class PersonalInformation extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Text(
-                      doctor.primaryPhone,
-                      softWrap: true,
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black38),
+                    child: Flexible(
+                      child: Text(
+                        doctor.primaryPhone,
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
                     ),
                   ),
                 ],
@@ -136,13 +142,15 @@ class PersonalInformation extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Text(
-                      doctor.alternatePhone!,
-                      softWrap: true,
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black38),
+                    child: Flexible(
+                      child: Text(
+                        doctor.alternatePhone!,
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
                     ),
                   ),
                 ],
@@ -162,13 +170,15 @@ class PersonalInformation extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Text(
-                      doctor.email,
-                      softWrap: true,
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black38),
+                    child: Flexible(
+                      child: Text(
+                        doctor.email,
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
                     ),
                   ),
                 ],

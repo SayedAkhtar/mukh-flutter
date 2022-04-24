@@ -21,7 +21,6 @@ Future<int> login(BuildContext context, String email, String pass) async {
     final storage = new FlutterSecureStorage();
     await storage.write(key: 'token', value: token);
     await Account.instance.storeAccountDetails(result['user']);
-    await storage.read(key: 'token');
     return response.statusCode;
   } else {
     return response.statusCode;

@@ -49,8 +49,20 @@ class Account {
   Future<void> storeAccountDetails(var result) async {
     final db = await instance.database;
 
-    final id = await db.insert(account, AccountFields.toJson(result));
-    List<Map> list = await db.rawQuery('''SELECT * FROM Account''');
+    await db.insert(account, AccountFields.toJson(result));
+  }
+
+  Future<void> updateAccountDetails(var result) async {
+    var databasesPath = await getDatabasesPath();
+    String path = join(databasesPath, 'mukh.db');
+    Database db = await openDatabase(
+      path,
+      version: 1,
+    );
+
+    await db.update(account, AccountFields.toJson(result),
+        where: '${AccountFields.id} = ?', whereArgs: [result['id']]);
+    await db.close();
   }
 
   Future<List<Map>> getAccDetails() async {
