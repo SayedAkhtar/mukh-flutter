@@ -80,14 +80,13 @@ class _AllPatientsState extends State<AllPatients> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                            'Dr. ' +
-                                                data[index].firstName +
+                                            data[index].firstName +
                                                 ' ' +
                                                 data[index].lastName,
                                             style: TextStyle(
                                                 fontSize: 20.0,
                                                 fontWeight: FontWeight.bold)),
-                                        Text('Doctor ID: 12345'),
+                                        Text('Patient ID: ${data[index].id}'),
                                       ]),
                                 ]),
                               );

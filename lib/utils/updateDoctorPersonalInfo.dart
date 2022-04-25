@@ -17,7 +17,6 @@ Future<int> updateDoctorPersonalInfo(
     String alternatePhone,
     String gender,
     String city) async {
-  print(alternatePhone);
   final storage = new FlutterSecureStorage();
   String token = await storage.read(key: 'token') ?? '';
   final response = await http.post(

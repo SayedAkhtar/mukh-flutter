@@ -88,7 +88,7 @@ class _AllDoctorsState extends State<AllDoctors> {
                                             style: TextStyle(
                                                 fontSize: 20.0,
                                                 fontWeight: FontWeight.bold)),
-                                        Text('Doctor ID: 12345'),
+                                        Text('Doctor ID: ${data[index].id}'),
                                       ]),
                                 ]),
                               );
