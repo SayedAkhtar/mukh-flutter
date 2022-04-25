@@ -4,8 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mukh/screen/consultant/landingPage.dart';
 import 'package:mukh/utils/signup.dart';
 
-import '../AppConstants/constant.dart';
-
 class RegisterSelection extends StatefulWidget {
   const RegisterSelection(
       {Key? key,

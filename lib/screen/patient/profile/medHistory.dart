@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:mukh/AppConstants/constant.dart';
 
 class MedicalHistory extends StatefulWidget {

@@ -24,6 +24,7 @@ Future<Map> getAllPatients(int index) async {
 
     for (int i = 0; i < patientsData.length; i++) {
       Patient _patient = Patient(
+          address: patientsData[i]["address"].toString(),
           id: patientsData[i]["id"].toString(),
           firstName: patientsData[i]["first_name"].toString(),
           lastName: patientsData[i]["last_name"].toString(),

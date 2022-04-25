@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/models/patient.dart';
+import 'package:mukh/screen/patient/profile.dart';
 
 import '../../components/StyledInput.dart';
 import '../../utils/getAllPatients.dart';
@@ -70,25 +71,33 @@ class _AllPatientsState extends State<AllPatients> {
                               return Padding(
                                 padding: const EdgeInsets.fromLTRB(
                                     15.0, 15.0, 15.0, 0),
-                                child: Row(children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 30.0),
-                                    child: Image.asset('asset/avatar-1.png'),
-                                  ),
-                                  Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                            data[index].firstName +
-                                                ' ' +
-                                                data[index].lastName,
-                                            style: TextStyle(
-                                                fontSize: 20.0,
-                                                fontWeight: FontWeight.bold)),
-                                        Text('Patient ID: ${data[index].id}'),
-                                      ]),
-                                ]),
+                                child: InkWell(
+                                  onTap: () async {
+                                    Get.to(() => PatientProfile(
+                                          id: data[index].id,
+                                        ));
+                                  },
+                                  child: Row(children: [
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(right: 30.0),
+                                      child: Image.asset('asset/avatar-1.png'),
+                                    ),
+                                    Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                              data[index].firstName +
+                                                  ' ' +
+                                                  data[index].lastName,
+                                              style: TextStyle(
+                                                  fontSize: 20.0,
+                                                  fontWeight: FontWeight.bold)),
+                                          Text('Patient ID: ${data[index].id}'),
+                                        ]),
+                                  ]),
+                                ),
                               );
                             }),
                       ),

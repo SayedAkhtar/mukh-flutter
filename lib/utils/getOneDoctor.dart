@@ -7,9 +7,11 @@ import 'package:mukh/utils/storeAccountDetails.dart';
 
 import '../models/doctor.dart';
 
-Future<Map> getOneDoctor() async {
+Future<Map> getOneDoctor(String id) async {
   var account = await Account.instance.getAccDetails();
-  int id = (account)[0]['_id'] as int;
+  if (id == '') {
+    id = ((account)[0]['_id'] as int).toString();
+  }
   final storage = new FlutterSecureStorage();
   String token = await storage.read(key: 'token') ?? '';
   final response = await http.get(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mukh/screen/patient/profile.dart';
 
-import '../../AppConstants/constant.dart';
 import '../consultant/addPatient.dart';
 import '../notification.dart';
 
@@ -17,7 +16,7 @@ class _PatientHomeState extends State<PatientHome> {
 
   List<Widget> _tabs = [
     Notifications(),
-    PatientProfile(),
+    PatientProfile(id: '1'),
     AddPatient(),
   ];
 

@@ -6,15 +6,14 @@ import 'package:mukh/components/SectionHeading.dart';
 import 'package:mukh/models/doctor.dart';
 import 'package:mukh/screen/consultant/allDoctors.dart';
 import 'package:mukh/screen/consultant/allPatients.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:sqflite/sqlite_api.dart';
-import 'package:path/path.dart';
+import 'package:mukh/screen/patient/profile.dart';
 
 import '../../components/DoctorProfileAppBar.dart';
 import '../../models/patient.dart';
 import '../../utils/getAllDoctors.dart';
 import '../../utils/getAllPatients.dart';
 import '../../utils/storeAccountDetails.dart';
+import 'profile.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -78,11 +77,17 @@ class _HomeState extends State<Home> {
                                       itemCount:
                                           data.length > 3 ? 3 : data.length,
                                       itemBuilder: (context, i) {
-                                        return CardList(
-                                            data[i].firstName +
-                                                ' ' +
-                                                data[i].lastName,
-                                            data[i].id);
+                                        return InkWell(
+                                          onTap: () {
+                                            Get.to(() =>
+                                                PatientProfile(id: data[i].id));
+                                          },
+                                          child: CardList(
+                                              data[i].firstName +
+                                                  ' ' +
+                                                  data[i].lastName,
+                                              data[i].id),
+                                        );
                                       },
                                     );
                                   } else {
@@ -114,12 +119,19 @@ class _HomeState extends State<Home> {
                                       itemCount:
                                           data.length > 3 ? 3 : data.length,
                                       itemBuilder: (context, i) {
-                                        return CardList(
-                                            'Dr. ' +
-                                                data[i].firstName +
-                                                ' ' +
-                                                data[i].lastName,
-                                            data[i].id);
+                                        return InkWell(
+                                          onTap: () {
+                                            Get.to(() => DoctorProfile(
+                                                isEditAllowed: false,
+                                                id: data[i].id));
+                                          },
+                                          child: CardList(
+                                              'Dr. ' +
+                                                  data[i].firstName +
+                                                  ' ' +
+                                                  data[i].lastName,
+                                              data[i].id),
+                                        );
                                       },
                                     );
                                   } else {

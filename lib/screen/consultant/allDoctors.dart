@@ -6,6 +6,7 @@ import 'package:mukh/utils/getAllDoctors.dart';
 
 import '../../components/StyledInput.dart';
 import '../../models/doctor.dart';
+import 'profile.dart';
 
 class AllDoctors extends StatefulWidget {
   const AllDoctors({Key? key}) : super(key: key);
@@ -71,26 +72,35 @@ class _AllDoctorsState extends State<AllDoctors> {
                               return Padding(
                                 padding: const EdgeInsets.fromLTRB(
                                     15.0, 15.0, 15.0, 0),
-                                child: Row(children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 30.0),
-                                    child: Image.asset('asset/avatar-1.png'),
-                                  ),
-                                  Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                            'Dr. ' +
-                                                data[index].firstName +
-                                                ' ' +
-                                                data[index].lastName,
-                                            style: TextStyle(
-                                                fontSize: 20.0,
-                                                fontWeight: FontWeight.bold)),
-                                        Text('Doctor ID: ${data[index].id}'),
-                                      ]),
-                                ]),
+                                child: InkWell(
+                                  onTap: () {
+                                    Get.to(() => DoctorProfile(
+                                          isEditAllowed: false,
+                                          id: data[index].id,
+                                        ));
+                                  },
+                                  child: Row(children: [
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(right: 30.0),
+                                      child: Image.asset('asset/avatar-1.png'),
+                                    ),
+                                    Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                              'Dr. ' +
+                                                  data[index].firstName +
+                                                  ' ' +
+                                                  data[index].lastName,
+                                              style: TextStyle(
+                                                  fontSize: 20.0,
+                                                  fontWeight: FontWeight.bold)),
+                                          Text('Doctor ID: ${data[index].id}'),
+                                        ]),
+                                  ]),
+                                ),
                               );
                             }),
                       ),

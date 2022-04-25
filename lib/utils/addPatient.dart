@@ -42,5 +42,6 @@ Future<int> addPatient(
 
   final result = await response.send();
   var responsed = await http.Response.fromStream(result);
+  print(responsed.body);
   return responsed.statusCode;
 }

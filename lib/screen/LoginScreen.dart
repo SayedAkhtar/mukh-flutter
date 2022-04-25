@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/screen/RegisterScreen.dart';
-import 'package:mukh/screen/RegisterSelection.dart';
 import 'package:mukh/screen/consultant/landingPage.dart';
 import '../AppConstants/constant.dart';
 import '../utils/login.dart';

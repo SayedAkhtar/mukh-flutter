@@ -9,6 +9,7 @@ class Patient {
   String primaryPhone;
   String? alternatePhone;
   String gender;
+  String address;
   String bloodGroup;
   String createdAt, updatedAt, deletedAt;
   String? image;
@@ -20,6 +21,7 @@ class Patient {
       required this.email,
       required this.dateOfBirth,
       required this.primaryPhone,
+      required this.address,
       this.alternatePhone = '',
       required this.city,
       required this.type,

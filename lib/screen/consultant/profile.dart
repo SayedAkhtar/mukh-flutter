@@ -12,9 +12,13 @@ import 'package:mukh/screen/consultant/profile/ReferStatus.dart';
 import '../../utils/getOneDoctor.dart';
 
 class DoctorProfile extends StatefulWidget {
-  const DoctorProfile({Key? key, this.index = 0}) : super(key: key);
+  const DoctorProfile(
+      {Key? key, this.index = 0, this.isEditAllowed = true, this.id})
+      : super(key: key);
 
   final int? index;
+  final String? id;
+  final bool? isEditAllowed;
 
   @override
   State<DoctorProfile> createState() => _DoctorProfileState();
@@ -35,11 +39,10 @@ class _DoctorProfileState extends State<DoctorProfile>
   Widget build(BuildContext context) {
     return SafeArea(
       child: FutureBuilder(
-        future: getOneDoctor(),
+        future: getOneDoctor(widget.id ?? ''),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data == null) return SizedBox.shrink();
-
             return Scaffold(
               appBar: PreferredSize(
                 preferredSize: const Size(double.infinity, 220),
@@ -56,7 +59,9 @@ class _DoctorProfileState extends State<DoctorProfile>
                         children: [
                           IconButton(
                               onPressed: () {
-                                Get.off(() => EditDetailsTabs());
+                                widget.isEditAllowed!
+                                    ? Get.off(() => EditDetailsTabs())
+                                    : Get.back();
                               },
                               icon: Icon(
                                 Icons.arrow_back,
@@ -64,24 +69,27 @@ class _DoctorProfileState extends State<DoctorProfile>
                                 color: Constant.secondaryColor,
                               )),
                           IconButton(
-                              onPressed: () {
-                                if (_tabController!.index == 0) {
-                                  Get.off(() => EditPersonalInformation(
-                                      doctor: (snapshot.data
-                                          as Map)['doctors_data']));
-                                } else if (_tabController!.index == 1) {
-                                  String id =
-                                      (snapshot.data as Map)['doctors_data'].id;
-                                  Map profDetails = (snapshot.data
-                                      as Map)['professional_details'];
-                                  profDetails['id'] = id;
-                                  Get.off(() => EditProfessionalDetails(
-                                      profDetails: profDetails));
-                                }
-                              },
+                              onPressed: widget.isEditAllowed!
+                                  ? () {
+                                      if (_tabController!.index == 0) {
+                                        Get.off(() => EditPersonalInformation(
+                                            doctor: (snapshot.data
+                                                as Map)['doctors_data']));
+                                      } else if (_tabController!.index == 1) {
+                                        String id = (snapshot.data
+                                                as Map)['doctors_data']
+                                            .id;
+                                        Map profDetails = (snapshot.data
+                                            as Map)['professional_details'];
+                                        profDetails['id'] = id;
+                                        Get.off(() => EditProfessionalDetails(
+                                            profDetails: profDetails));
+                                      }
+                                    }
+                                  : null,
                               icon: Icon(
                                 Icons.edit,
-                                size: 30.0,
+                                size: widget.isEditAllowed! ? 30.0 : 0.0,
                                 color: Constant.secondaryColor,
                               )),
                         ],

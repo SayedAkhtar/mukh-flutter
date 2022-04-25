@@ -1,163 +1,277 @@
 import 'package:flutter/material.dart';
 
+import '../../../models/patient.dart';
+
 class PersonalInformation extends StatelessWidget {
-  const PersonalInformation({Key? key}) : super(key: key);
+  const PersonalInformation({Key? key, required this.patient})
+      : super(key: key);
 
-  TextStyle _titles() {
-    return TextStyle(
-      color: Colors.black,
-    );
-  }
-
-  TextStyle _details() {
-    return TextStyle(
-      color: Colors.blueGrey,
-      overflow: TextOverflow.ellipsis,
-    );
-  }
+  final Patient patient;
 
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    double _height = MediaQuery.of(context).size.height;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'First Name',
-                style: _titles(),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 24.0),
+              child: Row(
+                children: [
+                  Container(
+                    width: _width * 0.4,
+                    child: const Text(
+                      "First Name",
+                      softWrap: true,
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Container(
+                    child: Flexible(
+                      child: Text(
+                        patient.firstName,
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                'Shourya',
-                style: _details(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 24.0),
+              child: Row(
+                children: [
+                  Container(
+                    width: _width * 0.4,
+                    child: const Text(
+                      "Last Name",
+                      softWrap: true,
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Container(
+                    child: Flexible(
+                      child: Text(
+                        patient.lastName,
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Last Name',
-                style: _titles(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 24.0),
+              child: Row(
+                children: [
+                  Container(
+                    width: _width * 0.4,
+                    child: const Text(
+                      "Contact",
+                      softWrap: true,
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Container(
+                    child: Flexible(
+                      child: Text(
+                        patient.primaryPhone,
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                'Shikhar',
-                style: _details(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 24.0),
+              child: Row(
+                children: [
+                  Container(
+                    width: _width * 0.4,
+                    child: const Text(
+                      "Alternate contact",
+                      softWrap: true,
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Container(
+                    child: Flexible(
+                      child: Text(
+                        patient.alternatePhone ?? '',
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Contact Number',
-                style: _titles(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 24.0),
+              child: Row(
+                children: [
+                  Container(
+                    width: _width * 0.4,
+                    child: const Text(
+                      "Email",
+                      softWrap: true,
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Container(
+                    child: Flexible(
+                      child: Text(
+                        patient.email,
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                '1234567890',
-                style: _details(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 24.0),
+              child: Row(
+                children: [
+                  Container(
+                    width: _width * 0.4,
+                    child: const Text(
+                      "D. O. B.",
+                      softWrap: true,
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Container(
+                    child: Flexible(
+                      child: Text(
+                        patient.dateOfBirth,
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Alt. Contact Number',
-                style: _titles(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 24.0),
+              child: Row(
+                children: [
+                  Container(
+                    width: _width * 0.4,
+                    child: const Text(
+                      "Gender",
+                      softWrap: true,
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Container(
+                    child: Flexible(
+                      child: Text(
+                        patient.gender.toString(),
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                '0987654321',
-                style: _details(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 24.0),
+              child: Row(
+                children: [
+                  Container(
+                    width: _width * 0.4,
+                    child: const Text(
+                      "Blood Group",
+                      softWrap: true,
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Container(
+                    child: Flexible(
+                      child: Text(
+                        patient.bloodGroup.toString(),
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Email',
-                style: _titles(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 24.0),
+              child: Row(
+                children: [
+                  Container(
+                    width: _width * 0.4,
+                    child: const Text(
+                      "Address",
+                      softWrap: true,
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Container(
+                    child: Flexible(
+                      child: Text(
+                        patient.address,
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                'test@xyz.com',
-                style: _details(),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'D. O. B.',
-                style: _titles(),
-              ),
-              Text(
-                '29-02-1947',
-                style: _details(),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Age',
-                style: _titles(),
-              ),
-              Text(
-                '87',
-                style: _details(),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Gender',
-                style: _titles(),
-              ),
-              Text(
-                'Male',
-                style: _details(),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'B. G.',
-                style: _titles(),
-              ),
-              Text(
-                'B +ve',
-                style: _details(),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Address',
-                style: _titles(),
-              ),
-              Text(
-                '221B Baker Street',
-                style: _details(),
-              ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }

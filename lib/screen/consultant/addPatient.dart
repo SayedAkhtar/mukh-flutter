@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:mukh/screen/consultant/landingPage.dart';
 import 'package:mukh/utils/addPatient.dart';
 
 import '../../AppConstants/constant.dart';
@@ -242,8 +241,11 @@ class _AddPatientState extends State<AddPatient> {
                                               Navigator.pop(context);
                                               await _picker
                                                   .pickImage(
-                                                      source:
-                                                          ImageSource.camera)
+                                                source: ImageSource.camera,
+                                                maxHeight: 480,
+                                                maxWidth: 480,
+                                                imageQuality: 50,
+                                              )
                                                   .then((value) {
                                                 if (value != null) {
                                                   _image.text = value.path;
@@ -262,7 +264,10 @@ class _AddPatientState extends State<AddPatient> {
                                               await _picker
                                                   .pickImage(
                                                       source:
-                                                          ImageSource.gallery)
+                                                          ImageSource.gallery,
+                                                      maxHeight: 480,
+                                                      maxWidth: 480,
+                                                      imageQuality: 50)
                                                   .then((value) {
                                                 if (value != null) {
                                                   _image.text = value.path;
