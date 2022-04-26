@@ -142,7 +142,7 @@ class _PatientProfileState extends State<PatientProfile>
                   controller: _tabController,
                   children: <Widget>[
                     PersonalInformation(patient: patient),
-                    MedicalHistory(),
+                    MedicalHistory(id: patient.id),
                     DentalHistory(),
                     Medicines(),
                     Others(),

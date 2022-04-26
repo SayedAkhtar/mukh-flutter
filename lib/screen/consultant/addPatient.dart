@@ -48,7 +48,7 @@ class _AddPatientState extends State<AddPatient> {
     return InputDecoration(
       labelText: label,
       labelStyle: TextStyle(color: Constant.mainColor),
-      fillColor: Color.fromRGBO(239, 245, 255, 1),
+      fillColor: const Color.fromRGBO(239, 245, 255, 1),
       filled: true,
       enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)),

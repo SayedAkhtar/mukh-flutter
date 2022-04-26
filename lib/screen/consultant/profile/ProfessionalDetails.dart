@@ -38,13 +38,15 @@ class ProfessionalDetails extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Text(
-                      _qualifications,
-                      softWrap: true,
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black38),
+                    child: Flexible(
+                      child: Text(
+                        _qualifications,
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
                     ),
                   ),
                 ],
@@ -64,13 +66,15 @@ class ProfessionalDetails extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Text(
-                      profDetails['hospital'] ?? '',
-                      softWrap: true,
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black38),
+                    child: Flexible(
+                      child: Text(
+                        profDetails['hospital'] ?? '',
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
                     ),
                   ),
                 ],
@@ -90,13 +94,15 @@ class ProfessionalDetails extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Text(
-                      profDetails['department'] ?? '',
-                      softWrap: true,
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black38),
+                    child: Flexible(
+                      child: Text(
+                        profDetails['department'] ?? '',
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
                     ),
                   ),
                 ],
@@ -116,13 +122,15 @@ class ProfessionalDetails extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Text(
-                      profDetails['designation'] ?? '',
-                      softWrap: true,
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black38),
+                    child: Flexible(
+                      child: Text(
+                        profDetails['designation'] ?? '',
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
                     ),
                   ),
                 ],
@@ -142,13 +150,15 @@ class ProfessionalDetails extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Text(
-                      profDetails['specialization'] ?? '',
-                      softWrap: true,
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black38),
+                    child: Flexible(
+                      child: Text(
+                        profDetails['specialization'] ?? '',
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
                     ),
                   ),
                 ],
@@ -168,13 +178,15 @@ class ProfessionalDetails extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Text(
-                      profDetails['years_of_experience'].toString(),
-                      softWrap: true,
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black38),
+                    child: Flexible(
+                      child: Text(
+                        profDetails['years_of_experience'].toString(),
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
                     ),
                   ),
                 ],
@@ -194,13 +206,15 @@ class ProfessionalDetails extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Text(
-                      profDetails['achievements'] ?? '',
-                      softWrap: true,
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black38),
+                    child: Flexible(
+                      child: Text(
+                        profDetails['achievements'] ?? '',
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
                     ),
                   ),
                 ],
@@ -220,13 +234,15 @@ class ProfessionalDetails extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Text(
-                      profDetails['fellowship_membership'] ?? '',
-                      softWrap: true,
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black38),
+                    child: Flexible(
+                      child: Text(
+                        profDetails['fellowship_membership'] ?? '',
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
                     ),
                   ),
                 ],
@@ -246,13 +262,15 @@ class ProfessionalDetails extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Text(
-                      _languages,
-                      softWrap: true,
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black38),
+                    child: Flexible(
+                      child: Text(
+                        _languages,
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38),
+                      ),
                     ),
                   ),
                 ],

@@ -14,6 +14,7 @@ Future<Map> getOneDoctor(String id) async {
   }
   final storage = new FlutterSecureStorage();
   String token = await storage.read(key: 'token') ?? '';
+  print(token);
   final response = await http.get(
     Uri.parse(Constant.baseUrl + 'api/doctors/${id.toString()}'),
     headers: {
