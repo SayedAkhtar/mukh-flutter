@@ -2,13 +2,14 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:mukh/AppConstants/constant.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:mukh/screen/LoginScreen.dart';
+import 'package:mukh/utils/token/getToken.dart';
+import 'package:mukh/utils/token/removeToken.dart';
 
-import '../models/doctor.dart';
+import '../../models/doctor.dart';
 
 Future<Map> getAllDoctors(int index) async {
-  final storage = new FlutterSecureStorage();
-  String token = await storage.read(key: 'token') ?? '';
+  String token = await getToken();
   final response = await http.get(
     Uri.parse(Constant.baseUrl + 'api/doctors?page=$index'),
     headers: {
@@ -46,11 +47,16 @@ Future<Map> getAllDoctors(int index) async {
 
     return {"total_pages": result['last_page'], "doctors_data": doctors};
   } else {
-    print(response.body);
     var errorMessage = json.decode(response.body);
-    errorMessage = errorMessage["message"];
 
-    Get.snackbar('Error', errorMessage, snackPosition: SnackPosition.BOTTOM);
+    if (errorMessage['message'] == 'Unauthenticated.') {
+      await removeToken().then((value) {
+        Get.off(() => LoginScreen());
+      });
+    } else {
+      errorMessage = errorMessage["message"];
+      Get.snackbar('Error', errorMessage, snackPosition: SnackPosition.BOTTOM);
+    }
     return {};
   }
 }

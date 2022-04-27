@@ -77,4 +77,16 @@ class Account {
     await db.close();
     return list;
   }
+
+  Future<void> deleteDb() async {
+    var databasesPath = await getDatabasesPath();
+    String path = join(databasesPath, 'mukh.db');
+    Database db = await openDatabase(
+      path,
+      version: 1,
+    );
+
+    await db.rawQuery('''DELETE FROM ${account}''');
+    await db.close();
+  }
 }

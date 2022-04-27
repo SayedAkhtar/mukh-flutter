@@ -8,8 +8,11 @@ import 'package:mukh/screen/consultant/profile/Availability.dart';
 import 'package:mukh/screen/consultant/profile/PersonalInformation.dart';
 import 'package:mukh/screen/consultant/profile/ProfessionalDetails.dart';
 import 'package:mukh/screen/consultant/profile/ReferStatus.dart';
+import 'package:mukh/utils/fav_doctor/isFavDoc.dart';
 
-import '../../utils/getOneDoctor.dart';
+import '../../utils/fav_doctor/addFavDoc.dart';
+import '../../utils/fav_doctor/removeFavDoc.dart';
+import '../../utils/get_doctor/getOneDoctor.dart';
 
 class DoctorProfile extends StatefulWidget {
   const DoctorProfile(
@@ -68,30 +71,60 @@ class _DoctorProfileState extends State<DoctorProfile>
                                 size: 30.0,
                                 color: Constant.secondaryColor,
                               )),
-                          IconButton(
-                              onPressed: widget.isEditAllowed!
-                                  ? () {
-                                      if (_tabController!.index == 0) {
-                                        Get.off(() => EditPersonalInformation(
-                                            doctor: (snapshot.data
-                                                as Map)['doctors_data']));
-                                      } else if (_tabController!.index == 1) {
-                                        String id = (snapshot.data
-                                                as Map)['doctors_data']
-                                            .id;
-                                        Map profDetails = (snapshot.data
-                                            as Map)['professional_details'];
-                                        profDetails['id'] = id;
-                                        Get.off(() => EditProfessionalDetails(
-                                            profDetails: profDetails));
-                                      }
+                          widget.isEditAllowed!
+                              ? IconButton(
+                                  onPressed: () {
+                                    if (_tabController!.index == 0) {
+                                      Get.off(() => EditPersonalInformation(
+                                          doctor: (snapshot.data
+                                              as Map)['doctors_data']));
+                                    } else if (_tabController!.index == 1) {
+                                      String id =
+                                          (snapshot.data as Map)['doctors_data']
+                                              .id;
+                                      Map profDetails = (snapshot.data
+                                          as Map)['professional_details'];
+                                      profDetails['id'] = id;
+                                      Get.off(() => EditProfessionalDetails(
+                                          profDetails: profDetails));
                                     }
-                                  : null,
-                              icon: Icon(
-                                Icons.edit,
-                                size: widget.isEditAllowed! ? 30.0 : 0.0,
-                                color: Constant.secondaryColor,
-                              )),
+                                  },
+                                  icon: Icon(
+                                    Icons.edit,
+                                    size: 30.0,
+                                    color: Constant.secondaryColor,
+                                  ))
+                              : FutureBuilder(
+                                  future: isFavDoc(widget.id ?? ''),
+                                  builder: ((context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      if (snapshot.data == null)
+                                        return SizedBox.shrink();
+                                      var data = snapshot.data as bool;
+                                      return IconButton(
+                                          onPressed: () async {
+                                            if (data) {
+                                              await removeFavDoc(
+                                                      widget.id ?? '')
+                                                  .then((value) =>
+                                                      setState(() {}));
+                                            } else {
+                                              await addFavDoc(widget.id ?? '')
+                                                  .then((value) =>
+                                                      setState(() {}));
+                                            }
+                                          },
+                                          icon: Icon(
+                                            data
+                                                ? Icons.favorite
+                                                : Icons.favorite_border,
+                                            size: 30.0,
+                                            color: Constant.secondaryColor,
+                                          ));
+                                    } else {
+                                      return SizedBox.shrink();
+                                    }
+                                  })),
                         ],
                       ),
                       Row(

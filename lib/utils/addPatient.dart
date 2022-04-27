@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:mukh/AppConstants/constant.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:mukh/utils/token/getToken.dart';
 
 Future<int> addPatient(
     BuildContext context,
@@ -16,9 +16,7 @@ Future<int> addPatient(
     String altPhone,
     String address,
     XFile image) async {
-  final storage = new FlutterSecureStorage();
-  String token = await storage.read(key: 'token') ?? '';
-  print("token: $token");
+  String token = await getToken();
   final response = await http.MultipartRequest(
       'POST', Uri.parse(Constant.baseUrl + 'api/patients'))
     ..headers.addAll({"Authorization": "Bearer $token"})

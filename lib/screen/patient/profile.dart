@@ -7,7 +7,7 @@ import 'package:mukh/screen/patient/profile/docReview.dart';
 import 'package:mukh/screen/patient/profile/medHistory.dart';
 import 'package:mukh/screen/patient/profile/medicines.dart';
 import 'package:mukh/screen/patient/profile/others.dart';
-import 'package:mukh/utils/getOnePatient.dart';
+import 'package:mukh/utils/get_patient/getOnePatient.dart';
 
 import '../../AppConstants/constant.dart';
 import '../../models/patient.dart';

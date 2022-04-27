@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/models/doctor.dart';
-import 'package:mukh/utils/getAllDoctors.dart';
+import 'package:mukh/screen/consultant/favDoctors.dart';
+import 'package:mukh/utils/get_doctor/getAllDoctors.dart';
 
 import '../../components/StyledInput.dart';
 import '../../models/doctor.dart';
+import '../../utils/fav_doctor/isFavDoc.dart';
 import 'profile.dart';
 
 class AllDoctors extends StatefulWidget {
@@ -48,6 +50,12 @@ class _AllDoctorsState extends State<AllDoctors> {
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: IconButton(
+                        onPressed: () => Get.to(() => FavDoctors()),
+                        icon: Icon(Icons.favorite, color: Colors.white)),
+                  ),
                 ],
               ),
             ),
@@ -85,20 +93,24 @@ class _AllDoctorsState extends State<AllDoctors> {
                                           const EdgeInsets.only(right: 30.0),
                                       child: Image.asset('asset/avatar-1.png'),
                                     ),
-                                    Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                              'Dr. ' +
-                                                  data[index].firstName +
-                                                  ' ' +
-                                                  data[index].lastName,
-                                              style: TextStyle(
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold)),
-                                          Text('Doctor ID: ${data[index].id}'),
-                                        ]),
+                                    Expanded(
+                                      child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                                'Dr. ' +
+                                                    data[index].firstName +
+                                                    ' ' +
+                                                    data[index].lastName,
+                                                style: TextStyle(
+                                                    fontSize: 20.0,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                            Text(
+                                                'Doctor ID: ${data[index].id}'),
+                                          ]),
+                                    ),
                                   ]),
                                 ),
                               );

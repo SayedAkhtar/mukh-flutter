@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/screen/consultant/profile.dart';
 
-import '../../../utils/updateDoctorProfessionalDetails.dart';
+import '../../../utils/update_doctor_details/updateDoctorProfessionalDetails.dart';
 
 class EditProfessionalDetails extends StatefulWidget {
   const EditProfessionalDetails({Key? key, required this.profDetails})
@@ -67,115 +67,124 @@ class _EditPersonalInformationState extends State<EditProfessionalDetails> {
   Widget build(BuildContext context) {
     final double _padding = 20.0;
 
-    return SafeArea(
-        child: Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {},
-            icon: IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () {
-                Get.back();
-              },
-            )),
-        title: Text('Personal Information', style: TextStyle(fontSize: 20)),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(_padding),
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Column(children: [
-            TextFormField(
-              controller: _hospital,
-              decoration: _inputDecoration('Hospital'),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: _padding),
-              child: TextFormField(
-                controller: _specialization,
-                decoration: _inputDecoration('Specialization'),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: _padding),
-              child: TextFormField(
-                controller: _department,
-                decoration: _inputDecoration('Department'),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: _padding),
-              child: TextFormField(
-                controller: _designation,
-                decoration: _inputDecoration('Designation'),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: _padding),
-              child: TextFormField(
-                controller: _achievements,
-                decoration: _inputDecoration('Achievements'),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: _padding),
-              child: TextFormField(
-                keyboardType: TextInputType.number,
-                controller: _yearsOfExperience,
-                decoration: _inputDecoration('Years of Experience'),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: _padding),
-              child: TextFormField(
-                controller: _fellowshipMembership,
-                decoration: _inputDecoration('Fellowship Membership'),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: _padding),
-              child: ElevatedButton(
-                onPressed: () async {
-                  int responseCode = await updateDoctorProfessionalDetails(
-                      context,
-                      widget.profDetails['id'],
-                      _hospital.text,
-                      _department.text,
-                      _specialization.text,
-                      _designation.text,
-                      _achievements.text,
-                      _fellowshipMembership.text,
-                      _yearsOfExperience.text);
-
-                  if (responseCode == 200) {
-                    Get.off(() => DoctorProfile(
-                          index: 1,
-                        ));
-                  } else {
-                    Get.snackbar('Error', 'Try again',
-                        snackPosition: SnackPosition.BOTTOM);
-                  }
+    return WillPopScope(
+      onWillPop: () async {
+        Get.off(() => DoctorProfile(
+              index: 1,
+              id: widget.profDetails['id'],
+            ));
+        return true;
+      },
+      child: SafeArea(
+          child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+              onPressed: () {},
+              icon: IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                  Get.back();
                 },
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: const Text('Update',
-                      style: TextStyle(fontSize: 20.0),
-                      textAlign: TextAlign.center),
-                ),
-                style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(180.0),
-                    )),
-                    foregroundColor:
-                        MaterialStateProperty.resolveWith(Constant.getColor),
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(vertical: 20.0))),
-              ),
-            )
-          ]),
+              )),
+          title: Text('Personal Information', style: TextStyle(fontSize: 20)),
         ),
-      ),
-    ));
+        body: Padding(
+          padding: EdgeInsets.all(_padding),
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Column(children: [
+              TextFormField(
+                controller: _hospital,
+                decoration: _inputDecoration('Hospital'),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: _padding),
+                child: TextFormField(
+                  controller: _specialization,
+                  decoration: _inputDecoration('Specialization'),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: _padding),
+                child: TextFormField(
+                  controller: _department,
+                  decoration: _inputDecoration('Department'),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: _padding),
+                child: TextFormField(
+                  controller: _designation,
+                  decoration: _inputDecoration('Designation'),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: _padding),
+                child: TextFormField(
+                  controller: _achievements,
+                  decoration: _inputDecoration('Achievements'),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: _padding),
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  controller: _yearsOfExperience,
+                  decoration: _inputDecoration('Years of Experience'),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: _padding),
+                child: TextFormField(
+                  controller: _fellowshipMembership,
+                  decoration: _inputDecoration('Fellowship Membership'),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: _padding),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    int responseCode = await updateDoctorProfessionalDetails(
+                        context,
+                        widget.profDetails['id'],
+                        _hospital.text,
+                        _department.text,
+                        _specialization.text,
+                        _designation.text,
+                        _achievements.text,
+                        _fellowshipMembership.text,
+                        _yearsOfExperience.text);
+
+                    if (responseCode == 200) {
+                      Get.off(() => DoctorProfile(
+                            index: 1,
+                          ));
+                    } else {
+                      Get.snackbar('Error', 'Try again',
+                          snackPosition: SnackPosition.BOTTOM);
+                    }
+                  },
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: const Text('Update',
+                        style: TextStyle(fontSize: 20.0),
+                        textAlign: TextAlign.center),
+                  ),
+                  style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(180.0),
+                      )),
+                      foregroundColor:
+                          MaterialStateProperty.resolveWith(Constant.getColor),
+                      padding: MaterialStateProperty.all(
+                          const EdgeInsets.symmetric(vertical: 20.0))),
+                ),
+              )
+            ]),
+          ),
+        ),
+      )),
+    );
   }
 }

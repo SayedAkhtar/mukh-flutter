@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:mukh/AppConstants/constant.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:mukh/models/patient.dart';
 
+import '../token/getToken.dart';
+
 Future<Map> getAllPatients(int index) async {
-  final storage = new FlutterSecureStorage();
-  String token = await storage.read(key: 'token') ?? '';
+  String token = await getToken();
   final response = await http.get(
     Uri.parse(Constant.baseUrl + 'api/patients?page=$index'),
     headers: {
@@ -46,7 +46,6 @@ Future<Map> getAllPatients(int index) async {
 
     return {"total_pages": result['last_page'], "patients_data": patients};
   } else {
-    print(response.body);
     var errorMessage = json.decode(response.body);
     errorMessage = errorMessage["message"];
 

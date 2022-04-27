@@ -10,8 +10,8 @@ import 'package:mukh/screen/patient/profile.dart';
 
 import '../../components/DoctorProfileAppBar.dart';
 import '../../models/patient.dart';
-import '../../utils/getAllDoctors.dart';
-import '../../utils/getAllPatients.dart';
+import '../../utils/get_doctor/getAllDoctors.dart';
+import '../../utils/get_patient/getAllPatients.dart';
 import '../../utils/storeAccountDetails.dart';
 import 'profile.dart';
 

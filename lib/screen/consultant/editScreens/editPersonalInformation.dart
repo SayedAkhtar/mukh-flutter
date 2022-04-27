@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/screen/consultant/profile.dart';
-import 'package:mukh/utils/updateDoctorPersonalInfo.dart';
+import 'package:mukh/utils/update_doctor_details/updateDoctorPersonalInfo.dart';
 
 import '../../../models/doctor.dart';
 
@@ -71,130 +71,138 @@ class _EditPersonalInformationState extends State<EditPersonalInformation> {
   Widget build(BuildContext context) {
     final double _padding = 20.0;
 
-    return SafeArea(
-        child: Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {},
-            icon: IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () {
-                Get.back();
-              },
-            )),
-        title: Text('Personal Information', style: TextStyle(fontSize: 20)),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(_padding),
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Column(children: [
-            TextFormField(
-              controller: _firstName,
-              keyboardType: TextInputType.name,
-              decoration: _inputDecoration('First Name'),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: _padding),
-              child: TextFormField(
-                controller: _lastName,
-                keyboardType: TextInputType.name,
-                decoration: _inputDecoration('Last Name'),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: _padding),
-              child: TextFormField(
-                controller: _contactNo,
-                keyboardType: TextInputType.phone,
-                decoration: _inputDecoration('Contact Number'),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: _padding),
-              child: TextFormField(
-                controller: _alternateContactNo,
-                keyboardType: TextInputType.phone,
-                decoration: _inputDecoration('Alternate Contact Number'),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: _padding),
-              child: TextFormField(
-                controller: _registrationId,
-                keyboardType: TextInputType.number,
-                decoration: _inputDecoration('Registration ID'),
-              ),
-            ),
-            DropdownButtonHideUnderline(
-              child: DropdownButtonFormField<String>(
-                decoration: _inputDecoration(_gender.text),
-                isExpanded: true,
-                // borderRadius: BorderRadius.all(Radius.circular(10)),
-                items: <String>['Male', 'Female', 'Unspecified']
-                    .map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                onChanged: (String? value) {
-                  _gender.text = value!.toLowerCase();
+    return WillPopScope(
+      onWillPop: () async {
+        Get.off(() => DoctorProfile(
+              index: 0,
+              id: widget.doctor.id,
+            ));
+        return true;
+      },
+      child: SafeArea(
+          child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+              onPressed: () {},
+              icon: IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                  Get.back();
                 },
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: _padding),
-              child: TextFormField(
-                keyboardType: TextInputType.streetAddress,
-                controller: _city,
-                decoration: _inputDecoration('City'),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: _padding),
-              child: ElevatedButton(
-                onPressed: () async {
-                  int responseCode = await updateDoctorPersonalInfo(
-                      context,
-                      _firstName.text,
-                      _lastName.text,
-                      widget.doctor.type,
-                      widget.doctor.email,
-                      _registrationId.text,
-                      widget.doctor.id,
-                      _contactNo.text,
-                      _alternateContactNo.text,
-                      _gender.text,
-                      _city.text);
-
-                  if (responseCode == 200) {
-                    Get.off(() => DoctorProfile());
-                  } else {
-                    Get.snackbar('Error', 'Try again',
-                        snackPosition: SnackPosition.BOTTOM);
-                  }
-                },
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: const Text('Update',
-                      style: TextStyle(fontSize: 20.0),
-                      textAlign: TextAlign.center),
-                ),
-                style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(180.0),
-                    )),
-                    foregroundColor:
-                        MaterialStateProperty.resolveWith(Constant.getColor),
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(vertical: 20.0))),
-              ),
-            )
-          ]),
+              )),
+          title: Text('Personal Information', style: TextStyle(fontSize: 20)),
         ),
-      ),
-    ));
+        body: Padding(
+          padding: EdgeInsets.all(_padding),
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Column(children: [
+              TextFormField(
+                controller: _firstName,
+                keyboardType: TextInputType.name,
+                decoration: _inputDecoration('First Name'),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: _padding),
+                child: TextFormField(
+                  controller: _lastName,
+                  keyboardType: TextInputType.name,
+                  decoration: _inputDecoration('Last Name'),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: _padding),
+                child: TextFormField(
+                  controller: _contactNo,
+                  keyboardType: TextInputType.phone,
+                  decoration: _inputDecoration('Contact Number'),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: _padding),
+                child: TextFormField(
+                  controller: _alternateContactNo,
+                  keyboardType: TextInputType.phone,
+                  decoration: _inputDecoration('Alternate Contact Number'),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: _padding),
+                child: TextFormField(
+                  controller: _registrationId,
+                  keyboardType: TextInputType.number,
+                  decoration: _inputDecoration('Registration ID'),
+                ),
+              ),
+              DropdownButtonHideUnderline(
+                child: DropdownButtonFormField<String>(
+                  decoration: _inputDecoration(_gender.text),
+                  isExpanded: true,
+                  items: <String>['Male', 'Female', 'Unspecified']
+                      .map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (String? value) {
+                    _gender.text = value!;
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: _padding),
+                child: TextFormField(
+                  keyboardType: TextInputType.streetAddress,
+                  controller: _city,
+                  decoration: _inputDecoration('City'),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: _padding),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    int responseCode = await updateDoctorPersonalInfo(
+                        context,
+                        _firstName.text,
+                        _lastName.text,
+                        widget.doctor.type,
+                        widget.doctor.email,
+                        _registrationId.text,
+                        widget.doctor.id,
+                        _contactNo.text,
+                        _alternateContactNo.text,
+                        _gender.text.toLowerCase(),
+                        _city.text);
+
+                    if (responseCode == 200) {
+                      Get.off(() => DoctorProfile());
+                    } else {
+                      Get.snackbar('Error', 'Try again',
+                          snackPosition: SnackPosition.BOTTOM);
+                    }
+                  },
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: const Text('Update',
+                        style: TextStyle(fontSize: 20.0),
+                        textAlign: TextAlign.center),
+                  ),
+                  style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(180.0),
+                      )),
+                      foregroundColor:
+                          MaterialStateProperty.resolveWith(Constant.getColor),
+                      padding: MaterialStateProperty.all(
+                          const EdgeInsets.symmetric(vertical: 20.0))),
+                ),
+              )
+            ]),
+          ),
+        ),
+      )),
+    );
   }
 }

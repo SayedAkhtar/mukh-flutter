@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:mukh/components/detailsEditTab.dart';
+import 'package:mukh/screen/LoginScreen.dart';
 import 'package:mukh/screen/consultant/profile.dart';
+import 'package:mukh/utils/token/removeToken.dart';
 
 import '../../AppConstants/constant.dart';
 import '../../utils/storeAccountDetails.dart';
@@ -86,89 +88,100 @@ class _EditPatientDetailsState extends State<EditDetailsTabs> {
                 ),
               ),
             ),
-            body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 20.0, horizontal: 35.0),
-                    child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Text('Edit Details',
-                            style: TextStyle(
-                                fontSize: 24.0, fontWeight: FontWeight.bold))),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            body: Column(
+              children: [
+                Expanded(
+                  child: Column(
                     children: [
-                      InkWell(
-                        onTap: () {
-                          Get.off(() => DoctorProfile(
-                                index: 0,
-                              ));
-                        },
-                        child: DetailsEditTab(
-                            EditTabName: 'Personal Information',
-                            icon: Icon(Icons.person, color: Colors.white)),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 20.0, horizontal: 35.0),
+                        child: Align(
+                            alignment: Alignment.topLeft,
+                            child: Text('Edit Details',
+                                style: TextStyle(
+                                    fontSize: 24.0,
+                                    fontWeight: FontWeight.bold))),
                       ),
-                      InkWell(
-                        onTap: () {
-                          Get.off(() => DoctorProfile(
-                                index: 1,
-                              ));
-                        },
-                        child: DetailsEditTab(
-                            EditTabName: 'Professional Details',
-                            icon: Icon(Icons.medical_services,
-                                color: Colors.white)),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Get.off(() => DoctorProfile(
+                                    index: 0,
+                                  ));
+                            },
+                            child: DetailsEditTab(
+                                EditTabName: 'Personal Information',
+                                icon: Icon(Icons.person, color: Colors.white)),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Get.off(() => DoctorProfile(
+                                    index: 1,
+                                  ));
+                            },
+                            child: DetailsEditTab(
+                                EditTabName: 'Professional Details',
+                                icon: Icon(Icons.medical_services,
+                                    color: Colors.white)),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Get.off(() => DoctorProfile(
+                                      index: 2,
+                                    ));
+                              },
+                              child: DetailsEditTab(
+                                  EditTabName: 'My referred Patients',
+                                  icon: Icon(Icons.medication,
+                                      color: Colors.white)),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Get.off(() => DoctorProfile(
+                                      index: 3,
+                                    ));
+                              },
+                              child: DetailsEditTab(
+                                  EditTabName: 'Check Availability',
+                                  icon: Icon(Icons.face, color: Colors.white)),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Get.off(() => DoctorProfile(
-                                  index: 2,
-                                ));
-                          },
-                          child: DetailsEditTab(
-                              EditTabName: 'My referred Patients',
-                              icon:
-                                  Icon(Icons.medication, color: Colors.white)),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Get.off(() => DoctorProfile(
-                                  index: 3,
-                                ));
-                          },
-                          child: DetailsEditTab(
-                              EditTabName: 'Check Availability',
-                              icon: Icon(Icons.face, color: Colors.white)),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // Padding(
-                  //   padding: const EdgeInsets.only(bottom: 20.0),
-                  //   child: Row(
-                  //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //     children: [
-                  //       InkWell(
-                  //         onTap: () {},
-                  //         child: DetailsEditTab(
-                  //             EditTabName: 'Others',
-                  //             icon: Icon(Icons.window, color: Colors.white)),
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
-                ],
-              ),
+                ),
+                TextButton(
+                    onPressed: () async {
+                      await removeToken()
+                          .then((value) => Get.offAll(() => LoginScreen()));
+                    },
+                    child: Text('Logout')),
+                // Padding(
+                //   padding: const EdgeInsets.only(bottom: 20.0),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //     children: [
+                //       InkWell(
+                //         onTap: () {},
+                //         child: DetailsEditTab(
+                //             EditTabName: 'Others',
+                //             icon: Icon(Icons.window, color: Colors.white)),
+                //       ),
+                //     ],
+                //   ),
+                // ),
+              ],
             ),
           );
         } else {

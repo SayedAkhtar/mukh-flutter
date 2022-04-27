@@ -5,7 +5,7 @@ import 'package:mukh/models/patient.dart';
 import 'package:mukh/screen/patient/profile.dart';
 
 import '../../components/StyledInput.dart';
-import '../../utils/getAllPatients.dart';
+import '../../utils/get_patient/getAllPatients.dart';
 
 class AllPatients extends StatefulWidget {
   const AllPatients({Key? key}) : super(key: key);
