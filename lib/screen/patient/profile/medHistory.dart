@@ -30,7 +30,8 @@ class _MedicalHistoryState extends State<MedicalHistory> {
           for (int i = 0; i < data.medicalConditions.length; i++) {
             otherMedConditions += data.medicalConditions[i].desc + '\n';
           }
-          otherMedConditions =
+          if (otherMedConditions.length > 0 )
+            otherMedConditions =
               otherMedConditions.substring(0, otherMedConditions.length - 1);
           return Column(
             children: [

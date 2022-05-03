@@ -68,6 +68,8 @@ class _AllPatientsState extends State<AllPatients> {
                         child: ListView.builder(
                             itemCount: data.length,
                             itemBuilder: (context, index) {
+                              print(
+                                  '${data[index].image}');
                               return Padding(
                                 padding: const EdgeInsets.fromLTRB(
                                     15.0, 15.0, 15.0, 0),
@@ -81,7 +83,11 @@ class _AllPatientsState extends State<AllPatients> {
                                     Padding(
                                       padding:
                                           const EdgeInsets.only(right: 30.0),
-                                      child: Image.asset('asset/avatar-1.png'),
+                                      child: CircleAvatar(
+                                        radius: 30.0,
+                                        backgroundImage: NetworkImage(
+                                            Constant.baseUrl + 'storage/' + data[index].image!,),
+                                      ),
                                     ),
                                     Column(
                                         crossAxisAlignment:

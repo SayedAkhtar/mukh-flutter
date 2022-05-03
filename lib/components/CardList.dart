@@ -5,8 +5,10 @@ import '../AppConstants/constant.dart';
 class CardList extends StatelessWidget {
   final patientId;
   final name;
+  final String? imagePath;
 
-  const CardList(String this.name, String this.patientId, {Key? key})
+  const CardList(String this.name, String this.patientId,
+      {Key? key, this.imagePath = 'avatars/default.png'})
       : super(key: key);
 
   @override
@@ -24,26 +26,33 @@ class CardList extends StatelessWidget {
             padding: const EdgeInsets.all(12.0),
             child: Row(
               children: [
-                Image.asset('asset/avatar-2.png'),
+                CircleAvatar(
+                  radius: 60,
+                  backgroundImage: NetworkImage(
+                    Constant.baseUrl + 'storage/' + imagePath!,
+                  ),
+                ),
                 const SizedBox(
                   width: 20.0,
                 ),
-                RichText(
-                    text: TextSpan(
-                        text: "${name} \n",
-                        style: TextStyle(
-                            fontSize: 20.0,
-                            fontFamily: 'Sansation',
-                            color: Constant.mainColor),
-                        children: [
-                      TextSpan(
-                          text: "ID: ${patientId}",
-                          style: const TextStyle(
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                              height: 1.5))
-                    ]))
+                Flexible(
+                  child: RichText(
+                      text: TextSpan(
+                          text: "${name} \n",
+                          style: TextStyle(
+                              fontSize: 20.0,
+                              fontFamily: 'Sansation',
+                              color: Constant.mainColor),
+                          children: [
+                        TextSpan(
+                            text: "ID: ${patientId}",
+                            style: const TextStyle(
+                                fontSize: 12.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                                height: 1.5))
+                      ])),
+                )
               ],
             ),
           ),

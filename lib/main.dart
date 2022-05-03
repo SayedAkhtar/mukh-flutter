@@ -5,9 +5,7 @@ import 'package:mukh/splash.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const GetMaterialApp(
-    home: MyApp(),
-  ));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       theme: ThemeData(
           primarySwatch: Colors.blue,
           fontFamily: 'Sansation',

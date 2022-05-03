@@ -13,7 +13,7 @@ class MedicineCardPatient extends StatelessWidget {
 
   final bool isActive;
   final String name, startDate, endDate;
-  final int dosage;
+  final String dosage;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class MedicineCardPatient extends StatelessWidget {
                   height: 40,
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: dosage,
+                      itemCount: int.parse(dosage.split('')[0]),
                       itemBuilder: (context, index) {
                         return Icon(
                           Icons.circle,

@@ -86,7 +86,8 @@ class _HomeState extends State<Home> {
                                               data[i].firstName +
                                                   ' ' +
                                                   data[i].lastName,
-                                              data[i].id),
+                                              data[i].id,
+                                              imagePath: data[i].image,),
                                         );
                                       },
                                     );

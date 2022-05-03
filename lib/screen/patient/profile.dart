@@ -67,7 +67,7 @@ class _PatientProfileState extends State<PatientProfile>
                                   getDialog();
                                 },
                                 icon: Icon(
-                                  Icons.list_rounded,
+                                  Icons.edit,
                                   size: 30.0,
                                   color: Constant.secondaryColor,
                                 )),
@@ -83,7 +83,13 @@ class _PatientProfileState extends State<PatientProfile>
                                 borderRadius: BorderRadius.circular(1000),
                                 color: Colors.white,
                               ),
-                              child: Image.asset('asset/avatar-xl.png'),
+                              child: CircleAvatar(
+                                radius: 55,
+                                backgroundImage: NetworkImage(
+                                  Constant.baseUrl + 'storage/' +
+                                      patient.image!,
+                                ),
+                              ),
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,7 +150,9 @@ class _PatientProfileState extends State<PatientProfile>
                     PersonalInformation(patient: patient),
                     MedicalHistory(id: patient.id),
                     DentalHistory(),
-                    Medicines(),
+                    Medicines(
+                      id: patient.id,
+                    ),
                     Others(),
                     DoctorReview(),
                   ],
