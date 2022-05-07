@@ -25,7 +25,7 @@ Future<void> getDialog() async {
           )),
       TextButton(
           onPressed: () {
-            Get.off(() => EditMedicines());
+            // Get.off(() => EditMedicines());
           },
           child: Text(
             'Edit Medicines',

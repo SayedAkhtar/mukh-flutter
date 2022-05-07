@@ -22,13 +22,13 @@ class _MedicineTextFieldState extends State<MedicineTextField> {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-      _nameController.text = EditMedicinesState.medicinesList[widget.index];
+      _nameController.text = EditMedicinesState.medicinesName[widget.index];
     });
     return TextFormField(
       controller: _nameController,
       // save text field data in friends list at index
       // whenever text field value changes
-      onChanged: (v) => EditMedicinesState.medicinesList[widget.index] = v,
+      onChanged: (v) => EditMedicinesState.medicinesName[widget.index] = v,
       decoration: InputDecoration(
         hintText: 'Enter your friend\'s name'
       ),
