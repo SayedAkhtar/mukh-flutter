@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mukh/AppConstants/constant.dart';
 
 import '../../../models/MedicalDetails.dart';
 import '../../../utils/getMedicalDetailsPatient.dart';
@@ -30,9 +29,9 @@ class _MedicalHistoryState extends State<MedicalHistory> {
           for (int i = 0; i < data.medicalConditions.length; i++) {
             otherMedConditions += data.medicalConditions[i].desc + '\n';
           }
-          if (otherMedConditions.length > 0 )
+          if (otherMedConditions.length > 0)
             otherMedConditions =
-              otherMedConditions.substring(0, otherMedConditions.length - 1);
+                otherMedConditions.substring(0, otherMedConditions.length - 1);
           return Column(
             children: [
               Row(

@@ -4,6 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mukh/utils/addPatient.dart';
 
 import '../../AppConstants/constant.dart';
+import '../../components/FormAddInput.dart';
 
 class AddPatient extends StatefulWidget {
   const AddPatient({Key? key}) : super(key: key);
@@ -351,59 +352,5 @@ class _AddPatientState extends State<AddPatient> {
         ),
       ),
     ));
-  }
-}
-
-class FormAddInput extends StatelessWidget {
-  const FormAddInput(this.textLabel,
-      {Key? key,
-      this.icon,
-      this.iconSize = 20,
-      this.margin = EdgeInsets.zero,
-      this.textEditingController,
-      this.textInputType,
-      this.readOnly,
-      this.onTap,
-      this.isImage = false})
-      : super(key: key);
-  final String textLabel;
-  final IconData? icon;
-  final double iconSize;
-  final EdgeInsets margin;
-  final TextEditingController? textEditingController;
-  final TextInputType? textInputType;
-  final bool? readOnly;
-  final VoidCallback? onTap;
-  final bool isImage;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: margin,
-      child: TextField(
-        keyboardType: textInputType ?? TextInputType.text,
-        readOnly: readOnly ?? false,
-        onTap: onTap,
-        controller: textEditingController,
-        decoration: InputDecoration(
-          suffixIcon: isImage ? Icon(Icons.image) : null,
-          fillColor: Color.fromRGBO(239, 245, 255, 1),
-          filled: true,
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
-            borderSide: BorderSide(style: BorderStyle.none),
-          ),
-          focusedBorder: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
-            borderSide: BorderSide(style: BorderStyle.none),
-          ),
-          enabledBorder: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
-            borderSide: BorderSide(style: BorderStyle.none),
-          ),
-          labelText: textLabel,
-        ),
-      ),
-    );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:mukh/screen/patient/profile.dart';
 import 'package:mukh/utils/prescription/getPrescription.dart';
 
@@ -27,49 +26,37 @@ class EditMedicinesState extends State<EditMedicines> {
     super.initState();
   }
 
-  List<Widget> _displayMedicines() {
-    List<Widget> medicines = [];
-    for (int i = 0; i < medicineId.length; i++) {
-      medicines.add(Padding(
-        padding: const EdgeInsets.symmetric(vertical: 24.0),
-        child: Row(
-          children: [
-            Expanded(child: MedicineTextField(i)),
-            SizedBox(
-              width: 16,
-            ),
-            // we need add button at last friends row only
-            // _addRemoveButton(i == medicinesList.length - 1, i),
-          ],
-        ),
-      ));
-    }
-    return medicines;
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Edit Medicines'),
-        leading: GetBuilder<PrescriptionController>(builder: (value) {
-          List prescriptions = value.prescriptions;
-          return IconButton(
-            onPressed: () {
-              Get.off(() => PatientProfile(
-                    id: widget.id,
-                    index: 3,
-                  ));
-            },
-            icon: Icon(Icons.arrow_back),
-          );
-        }),
-      ),
-      body: SingleChildScrollView(
-        child: GetBuilder<PrescriptionController>(builder: (value) {
+    return WillPopScope(
+      onWillPop: () async {
+        Get.off(() => PatientProfile(
+              id: widget.id,
+              index: 3,
+            ));
+        return true;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Edit Medicines'),
+          leading: GetBuilder<PrescriptionController>(builder: (value) {
+            List prescriptions = value.prescriptions;
+            return IconButton(
+              onPressed: () {
+                Get.off(() => PatientProfile(
+                      id: widget.id,
+                      index: 3,
+                    ));
+              },
+              icon: Icon(Icons.arrow_back),
+            );
+          }),
+        ),
+        body: GetBuilder<PrescriptionController>(builder: (value) {
           List prescriptions = value.prescriptions;
           int _count = 0;
-          List<String> names = [],
+          List<String> id = [],
+              names = [],
               dosage = [],
               instructions = [],
               dosageStart = [],
@@ -78,6 +65,7 @@ class EditMedicinesState extends State<EditMedicines> {
             for (int j = 0;
                 j < (prescriptions[i].medicines.length as int);
                 j++) {
+              id.add(prescriptions[i].medicines[j].id);
               names.add(prescriptions[i].medicines[j].name as String);
               dosage.add(prescriptions[i].medicines[j].dosage as String);
               dosageStart
@@ -88,12 +76,19 @@ class EditMedicinesState extends State<EditMedicines> {
             }
             _count += prescriptions[i].medicines.length as int;
           }
-          print(names);
-          return Column(
-            children: [
-              ..._displayMedicines(),
-            ],
-          );
+
+          return ListView.builder(
+              itemCount: names.length,
+              itemBuilder: (context, index) {
+                return MedicineTextField(
+                  medicinesId: id[index],
+                  medicinesName: names[index],
+                  medicinesDosage: dosage[index],
+                  dosageStart: dosageStart[index],
+                  dosageEnd: dosageEnd[index],
+                  patientId: widget.id,
+                );
+              });
         }),
       ),
     );

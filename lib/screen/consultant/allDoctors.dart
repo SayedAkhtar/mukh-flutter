@@ -7,7 +7,6 @@ import 'package:mukh/utils/get_doctor/getAllDoctors.dart';
 
 import '../../components/StyledInput.dart';
 import '../../models/doctor.dart';
-import '../../utils/fav_doctor/isFavDoc.dart';
 import 'profile.dart';
 
 class AllDoctors extends StatefulWidget {

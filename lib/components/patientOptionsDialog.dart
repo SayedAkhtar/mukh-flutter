@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mukh/screen/consultant/editDetailsTabs.dart';
-import 'package:mukh/screen/patient/editScreens/medicines.dart';
 
 Future<void> getDialog() async {
   TextStyle _textStyle = TextStyle(

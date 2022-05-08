@@ -83,11 +83,12 @@ class _HomeState extends State<Home> {
                                                 PatientProfile(id: data[i].id));
                                           },
                                           child: CardList(
-                                              data[i].firstName +
-                                                  ' ' +
-                                                  data[i].lastName,
-                                              data[i].id,
-                                              imagePath: data[i].image,),
+                                            data[i].firstName +
+                                                ' ' +
+                                                data[i].lastName,
+                                            data[i].id,
+                                            imagePath: data[i].image,
+                                          ),
                                         );
                                       },
                                     );

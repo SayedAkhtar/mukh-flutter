@@ -14,7 +14,6 @@ class Medicines extends StatefulWidget {
 }
 
 class _MedicinesState extends State<Medicines> {
-
   @override
   initState() {
     super.initState();

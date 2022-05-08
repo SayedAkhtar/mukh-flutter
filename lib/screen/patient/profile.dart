@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mukh/components/patientOptionsDialog.dart';
 import 'package:mukh/screen/patient/editScreens/medicines.dart';
 import 'package:mukh/screen/patient/profile/personalInfo.dart';
 import 'package:mukh/screen/patient/profile/dentalHistory.dart';
@@ -14,7 +13,8 @@ import '../../AppConstants/constant.dart';
 import '../../models/patient.dart';
 
 class PatientProfile extends StatefulWidget {
-  const PatientProfile({Key? key, required this.id, this.index = 0}) : super(key: key);
+  const PatientProfile({Key? key, required this.id, this.index = 0})
+      : super(key: key);
 
   final String id;
   final int? index;
@@ -30,7 +30,8 @@ class _PatientProfileState extends State<PatientProfile>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(initialIndex: widget.index!, length: 6, vsync: this);
+    _tabController =
+        TabController(initialIndex: widget.index!, length: 6, vsync: this);
   }
 
   @override
@@ -66,7 +67,10 @@ class _PatientProfileState extends State<PatientProfile>
                                 )),
                             IconButton(
                                 onPressed: () {
-                                  _tabController!.index == 3 ? Get.off(() => EditMedicines(id: widget.id)) : null;
+                                  _tabController!.index == 3
+                                      ? Get.off(
+                                          () => EditMedicines(id: widget.id))
+                                      : null;
                                 },
                                 icon: Icon(
                                   Icons.edit,
@@ -88,7 +92,8 @@ class _PatientProfileState extends State<PatientProfile>
                               child: CircleAvatar(
                                 radius: 55,
                                 backgroundImage: NetworkImage(
-                                  Constant.baseUrl + 'storage/' +
+                                  Constant.baseUrl +
+                                      'storage/' +
                                       patient.image!,
                                 ),
                               ),

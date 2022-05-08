@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:mukh/AppConstants/constant.dart';
-import 'package:mukh/models/patient.dart';
 
 import '../../models/prescription.dart';
 import '../token/getToken.dart';
@@ -30,7 +29,6 @@ class PrescriptionController extends GetxController {
         "Authorization": "Bearer $token"
       },
     );
-
 
     if (response.statusCode == 200) {
       var result = json.decode(response.body) as List;
