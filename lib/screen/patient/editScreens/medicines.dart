@@ -52,44 +52,48 @@ class EditMedicinesState extends State<EditMedicines> {
             );
           }),
         ),
-        body: GetBuilder<PrescriptionController>(builder: (value) {
-          List prescriptions = value.prescriptions;
-          int _count = 0;
-          List<String> id = [],
-              names = [],
-              dosage = [],
-              instructions = [],
-              dosageStart = [],
-              dosageEnd = [];
-          for (int i = 0; i < prescriptions.length; i++) {
-            for (int j = 0;
-                j < (prescriptions[i].medicines.length as int);
-                j++) {
-              id.add(prescriptions[i].medicines[j].id);
-              names.add(prescriptions[i].medicines[j].name as String);
-              dosage.add(prescriptions[i].medicines[j].dosage as String);
-              dosageStart
-                  .add(prescriptions[i].medicines[j].dosageStart as String);
-              dosageEnd.add(prescriptions[i].medicines[j].dosageEnd as String);
-              instructions
-                  .add(prescriptions[i].medicines[j].instructions as String);
-            }
-            _count += prescriptions[i].medicines.length as int;
-          }
+        body: GetBuilder<PrescriptionController>(
+            init: PrescriptionController(widget.id),
+            builder: (value) {
+              List prescriptions = value.prescriptions;
+              int _count = 0;
+              List<String> id = [],
+                  names = [],
+                  dosage = [],
+                  instructions = [],
+                  dosageStart = [],
+                  dosageEnd = [];
+              for (int i = 0; i < prescriptions.length; i++) {
+                for (int j = 0;
+                    j < (prescriptions[i].medicines.length as int);
+                    j++) {
+                  id.add(prescriptions[i].medicines[j].id);
+                  names.add(prescriptions[i].medicines[j].name as String);
+                  dosage.add(prescriptions[i].medicines[j].dosage as String);
+                  dosageStart
+                      .add(prescriptions[i].medicines[j].dosageStart as String);
+                  dosageEnd
+                      .add(prescriptions[i].medicines[j].dosageEnd as String);
+                  instructions.add(
+                      prescriptions[i].medicines[j].instructions as String);
+                }
+                _count += prescriptions[i].medicines.length as int;
+              }
 
-          return ListView.builder(
-              itemCount: names.length,
-              itemBuilder: (context, index) {
-                return MedicineTextField(
-                  medicinesId: id[index],
-                  medicinesName: names[index],
-                  medicinesDosage: dosage[index],
-                  dosageStart: dosageStart[index],
-                  dosageEnd: dosageEnd[index],
-                  patientId: widget.id,
-                );
-              });
-        }),
+              return ListView.builder(
+                  itemCount: names.length,
+                  itemBuilder: (context, index) {
+                    return MedicineTextField(
+                      medicinesId: id[index],
+                      medicinesName: names[index],
+                      medicinesDosage: dosage[index],
+                      dosageStart: dosageStart[index],
+                      dosageEnd: dosageEnd[index],
+                      instructions: instructions[index],
+                      patientId: widget.id,
+                    );
+                  });
+            }),
       ),
     );
   }

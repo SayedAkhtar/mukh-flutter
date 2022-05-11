@@ -8,15 +8,20 @@ class MedicineCardPatient extends StatelessWidget {
       required this.name,
       required this.startDate,
       required this.endDate,
-      required this.dosage})
+      required this.dosage,
+      required this.instructions})
       : super(key: key);
 
   final bool isActive;
-  final String name, startDate, endDate;
-  final String dosage;
+  final String name, startDate, endDate, dosage, instructions;
 
   @override
   Widget build(BuildContext context) {
+    String instructions = this.instructions;
+    if (instructions.length > 15) {
+      instructions = instructions.substring(0, 15) + '...';
+    }
+
     return Padding(
       padding: const EdgeInsets.only(top: 20.0),
       child: Container(
@@ -32,8 +37,11 @@ class MedicineCardPatient extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text(name,
-                    style: TextStyle(color: Colors.white, fontSize: 20.0)),
+                Text(name + '\n' + instructions,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                    )),
                 SizedBox(
                   width: 100,
                   height: 40,

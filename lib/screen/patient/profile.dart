@@ -67,10 +67,10 @@ class _PatientProfileState extends State<PatientProfile>
                                 )),
                             IconButton(
                                 onPressed: () {
-                                  _tabController!.index == 3
-                                      ? Get.off(
-                                          () => EditMedicines(id: widget.id))
-                                      : null;
+                                  // _tabController!.index == 3
+                                  //     ? Get.off(
+                                  //         () => EditMedicines(id: widget.id))
+                                  //     : null;
                                 },
                                 icon: Icon(
                                   Icons.edit,
