@@ -4,6 +4,7 @@ import 'package:mukh/utils/prescription/deleteMedicine.dart';
 import 'package:mukh/utils/prescription/updateMedicine.dart';
 import '../AppConstants/constant.dart';
 import '../screen/patient/profile.dart';
+import '../utils/prescription/addMedicine.dart';
 import 'FormAddInput.dart';
 
 class MedicineTextField extends StatefulWidget {
@@ -14,7 +15,7 @@ class MedicineTextField extends StatefulWidget {
       required this.medicinesDosage,
       required this.dosageStart,
       required this.dosageEnd,
-      this.isRemove = true,
+      this.isUpdate = true,
       required this.patientId,
       required this.instructions})
       : super(key: key);
@@ -27,7 +28,7 @@ class MedicineTextField extends StatefulWidget {
       instructions,
       patientId;
 
-  final bool? isRemove;
+  final bool? isUpdate;
   @override
   _MedicineTextFieldState createState() => _MedicineTextFieldState();
 }
@@ -39,7 +40,7 @@ class _MedicineTextFieldState extends State<MedicineTextField> {
       _endController,
       _instructionsController;
 
-  late bool isUpdateBtnDisabled;
+  late bool isBtnDisabled;
 
   @override
   void initState() {
@@ -54,7 +55,7 @@ class _MedicineTextFieldState extends State<MedicineTextField> {
     _instructionsController.text = widget.instructions;
     _startController.text = widget.dosageStart;
     _endController.text = widget.dosageEnd;
-    isUpdateBtnDisabled = true;
+    isBtnDisabled = true;
   }
 
   @override
@@ -90,19 +91,22 @@ class _MedicineTextFieldState extends State<MedicineTextField> {
           ),
           actions: [
             IconButton(
-                onPressed: () async {
-                  await deleteMedicine(widget.medicinesId).then((value) {
-                    if (value == 200) {
-                      Get.off(() => PatientProfile(
-                            id: widget.patientId,
-                            index: 3,
-                          ));
-                    }
-                  });
-                },
+                onPressed: widget.isUpdate!
+                    ? () async {
+                        await deleteMedicine(widget.medicinesId).then((value) {
+                          if (value == 200) {
+                            Get.off(() => PatientProfile(
+                                  id: widget.patientId,
+                                  index: 3,
+                                ));
+                          }
+                        });
+                      }
+                    : null,
                 icon: Icon(Icons.delete)),
           ],
-          title: Text('Edit Medicines'),
+          title:
+              widget.isUpdate! ? Text('Edit Medicines') : Text('Add Medicine'),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
@@ -116,11 +120,11 @@ class _MedicineTextFieldState extends State<MedicineTextField> {
                   onChanged: (value) {
                     if (value != widget.medicinesName) {
                       setState(() {
-                        isUpdateBtnDisabled = false;
+                        isBtnDisabled = false;
                       });
                     } else {
                       setState(() {
-                        isUpdateBtnDisabled = true;
+                        isBtnDisabled = true;
                       });
                     }
                   },
@@ -143,11 +147,11 @@ class _MedicineTextFieldState extends State<MedicineTextField> {
                               if (value !=
                                   widget.medicinesDosage.split(' ')[0]) {
                                 setState(() {
-                                  isUpdateBtnDisabled = false;
+                                  isBtnDisabled = false;
                                 });
                               } else {
                                 setState(() {
-                                  isUpdateBtnDisabled = true;
+                                  isBtnDisabled = true;
                                 });
                               }
                             },
@@ -162,11 +166,11 @@ class _MedicineTextFieldState extends State<MedicineTextField> {
                             onChanged: (value) {
                               if (value != widget.dosageStart) {
                                 setState(() {
-                                  isUpdateBtnDisabled = false;
+                                  isBtnDisabled = false;
                                 });
                               } else {
                                 setState(() {
-                                  isUpdateBtnDisabled = true;
+                                  isBtnDisabled = true;
                                 });
                               }
                             },
@@ -194,11 +198,11 @@ class _MedicineTextFieldState extends State<MedicineTextField> {
                             onChanged: (value) {
                               if (value != widget.dosageEnd) {
                                 setState(() {
-                                  isUpdateBtnDisabled = false;
+                                  isBtnDisabled = false;
                                 });
                               } else {
                                 setState(() {
-                                  isUpdateBtnDisabled = true;
+                                  isBtnDisabled = true;
                                 });
                               }
                             },
@@ -229,11 +233,11 @@ class _MedicineTextFieldState extends State<MedicineTextField> {
                   onChanged: (value) {
                     if (value != widget.instructions) {
                       setState(() {
-                        isUpdateBtnDisabled = false;
+                        isBtnDisabled = false;
                       });
                     } else {
                       setState(() {
-                        isUpdateBtnDisabled = true;
+                        isBtnDisabled = true;
                       });
                     }
                   },
@@ -242,28 +246,44 @@ class _MedicineTextFieldState extends State<MedicineTextField> {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: ElevatedButton(
-                  onPressed: isUpdateBtnDisabled
+                  onPressed: isBtnDisabled
                       ? null
                       : () async {
-                          await updateMedicine(
-                                  widget.medicinesId,
-                                  _nameController.text,
-                                  _dosageController.text,
-                                  _startController.text,
-                                  _endController.text,
-                                  _instructionsController.text)
-                              .then((value) {
-                            if (value == 200) {
-                              Get.off(() => PatientProfile(
-                                    id: widget.patientId,
-                                    index: 3,
-                                  ));
-                            }
-                          });
+                          widget.isUpdate!
+                              ? await updateMedicine(
+                                      widget.medicinesId,
+                                      _nameController.text,
+                                      _dosageController.text,
+                                      _startController.text,
+                                      _endController.text,
+                                      _instructionsController.text)
+                                  .then((value) {
+                                  if (value == 200) {
+                                    Get.off(() => PatientProfile(
+                                          id: widget.patientId,
+                                          index: 3,
+                                        ));
+                                  }
+                                })
+                              : await addMedicine(
+                                      widget.patientId,
+                                      _nameController.text,
+                                      _dosageController.text,
+                                      _startController.text,
+                                      _endController.text,
+                                      _instructionsController.text)
+                                  .then((value) {
+                                  if (value == 200) {
+                                    Get.off(() => PatientProfile(
+                                          id: widget.patientId,
+                                          index: 3,
+                                        ));
+                                  }
+                                });
                         },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: const Text('Update',
+                    child: Text(widget.isUpdate! ? 'Update' : 'Add medicine',
                         style: TextStyle(fontSize: 20.0),
                         textAlign: TextAlign.center),
                   ),

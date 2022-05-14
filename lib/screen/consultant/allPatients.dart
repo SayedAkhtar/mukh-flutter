@@ -68,7 +68,6 @@ class _AllPatientsState extends State<AllPatients> {
                         child: ListView.builder(
                             itemCount: data.length,
                             itemBuilder: (context, index) {
-                              print('${data[index].image}');
                               return Padding(
                                 padding: const EdgeInsets.fromLTRB(
                                     15.0, 15.0, 15.0, 0),

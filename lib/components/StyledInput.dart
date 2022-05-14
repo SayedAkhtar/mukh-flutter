@@ -6,11 +6,13 @@ class StyledInput extends StatelessWidget {
       this.icon,
       this.iconSize = 20,
       this.controller,
-      this.isPassword})
+      this.isPassword,
+      this.func})
       : super(key: key);
   final String textLabel;
   final IconData? icon;
   final TextEditingController? controller;
+  final VoidCallback? func;
   final bool? isPassword;
   final double iconSize;
 
@@ -18,6 +20,7 @@ class StyledInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+      onEditingComplete: func,
       obscureText: isPassword ?? false,
       decoration: InputDecoration(
         prefixIcon:

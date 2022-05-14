@@ -35,15 +35,18 @@ class MedicineCardPatient extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(name + '\n' + instructions,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
-                    )),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  child: Text(name + '\n' + instructions,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                      )),
+                ),
                 SizedBox(
-                  width: 100,
+                  width: 150,
                   height: 40,
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,

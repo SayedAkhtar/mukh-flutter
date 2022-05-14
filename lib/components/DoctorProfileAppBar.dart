@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mukh/screen/consultant/editDetailsTabs.dart';
+import 'package:mukh/screen/search.dart';
 
 import '../AppConstants/constant.dart';
 import 'ProfilepicWidget.dart';
@@ -15,6 +16,7 @@ class DoctorProfileAppBar extends StatelessWidget
   @override
   // TODO: implement preferredSize
   final Size preferredSize = Size(double.infinity, 220.0);
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +57,14 @@ class DoctorProfileAppBar extends StatelessWidget
               const SizedBox(
                 height: 20.0,
               ),
-              const StyledInput(
+              StyledInput(
                 "Find a doctor or patient",
+                controller: _searchController,
+                func: () {
+                  Get.to(() => Search(
+                        name: _searchController.text,
+                      ));
+                },
                 icon: Icons.search_rounded,
                 iconSize: 32.0,
               )

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/components/medicineCardPatient.dart';
 
@@ -62,27 +61,42 @@ class _MedicinesState extends State<Medicines> {
             }
             return Column(
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 6.0,
-                    ),
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(
+                InkWell(
+                  onTap: () {
+                    Get.off(() => MedicineTextField(
+                          medicinesId: '',
+                          medicinesName: '',
+                          medicinesDosage: '',
+                          dosageStart: '',
+                          dosageEnd: '',
+                          instructions: '',
+                          patientId: widget.id,
+                          isUpdate: false,
+                        ));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 16.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 6.0,
+                        ),
+                        Icon(
                           Icons.add,
                           color: Constant.mainColor,
                           size: 30.0,
-                        )),
-                    SizedBox(
-                      width: 5.0,
+                        ),
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        Text(
+                          'Add Medicine',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ],
                     ),
-                    Text(
-                      'Add Medicine',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ],
+                  ),
                 ),
                 Expanded(
                   child: ListView.builder(
