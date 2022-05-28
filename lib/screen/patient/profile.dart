@@ -65,18 +65,30 @@ class _PatientProfileState extends State<PatientProfile>
                                   size: 30.0,
                                   color: Constant.secondaryColor,
                                 )),
-                            IconButton(
-                                onPressed: () {
-                                  // _tabController!.index == 4
-                                  //     ? Get.off(
-                                  //         () => Others(id: patient.id))
-                                  //     : null;
-                                },
-                                icon: Icon(
-                                  Icons.edit,
-                                  size: 30.0,
-                                  color: Constant.secondaryColor,
-                                )),
+                            PopupMenuButton(
+                              shape: ContinuousRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20.0),
+                                    bottomLeft: Radius.circular(20.0)),
+                              ),
+                              icon: Image.asset("asset/hamburger.png"),
+                              itemBuilder: (context) {
+                                return [
+                                  PopupMenuItem(
+                                      child: GestureDetector(
+                                    child: Text("Edit Details"),
+                                  )),
+                                  PopupMenuItem(
+                                      child: GestureDetector(
+                                    child: Text("Refer"),
+                                  )),
+                                  PopupMenuItem(
+                                      child: GestureDetector(
+                                    child: Text("Delete Patient"),
+                                  )),
+                                ];
+                              },
+                            ),
                           ],
                         ),
                         Row(

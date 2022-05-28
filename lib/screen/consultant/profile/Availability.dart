@@ -176,6 +176,7 @@ class Availability extends StatelessWidget {
                   color: Constant.mainColor,
                   size: 36,
                 ),
+                (profDetails['available_from'] != null && profDetails['available_to'] !=null)?
                 Text(
                     '\t' +
                         profDetails['available_from'].toString() +
@@ -184,7 +185,11 @@ class Availability extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.w600,
-                        color: Constant.mainColor)),
+                        color: Constant.mainColor))
+                :Text(" No Avaibility",style: TextStyle(
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.w600,
+                    color: Constant.mainColor)),
               ],
             ),
           ),

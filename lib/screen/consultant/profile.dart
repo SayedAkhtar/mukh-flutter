@@ -44,6 +44,7 @@ class _DoctorProfileState extends State<DoctorProfile>
       child: FutureBuilder(
         future: getOneDoctor(widget.id ?? ''),
         builder: (context, snapshot) {
+          print(snapshot.data);
           if (snapshot.hasData) {
             if (snapshot.data == null) return SizedBox.shrink();
             return Scaffold(

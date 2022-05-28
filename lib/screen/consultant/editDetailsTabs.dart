@@ -90,75 +90,71 @@ class _EditPatientDetailsState extends State<EditDetailsTabs> {
             ),
             body: Column(
               children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 20.0, horizontal: 35.0),
+                  child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Text('Edit Details',
+                          style: TextStyle(
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.bold))),
+                ),
                 Expanded(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 20.0, horizontal: 35.0),
-                        child: Align(
-                            alignment: Alignment.topLeft,
-                            child: Text('Edit Details',
-                                style: TextStyle(
-                                    fontSize: 24.0,
-                                    fontWeight: FontWeight.bold))),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GridView(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: MediaQuery.of(context).size.width *0.05,
+                        mainAxisSpacing: MediaQuery.of(context).size.width *0.05,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Get.off(() => DoctorProfile(
-                                    index: 0,
-                                  ));
-                            },
-                            child: DetailsEditTab(
-                                EditTabName: 'Personal Information',
-                                icon: Icon(Icons.person, color: Colors.white)),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Get.off(() => DoctorProfile(
-                                    index: 1,
-                                  ));
-                            },
-                            child: DetailsEditTab(
-                                EditTabName: 'Professional Details',
-                                icon: Icon(Icons.medical_services,
-                                    color: Colors.white)),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                Get.off(() => DoctorProfile(
-                                      index: 2,
-                                    ));
-                              },
-                              child: DetailsEditTab(
-                                  EditTabName: 'My referred Patients',
-                                  icon: Icon(Icons.medication,
-                                      color: Colors.white)),
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Get.off(() => DoctorProfile(
-                                      index: 3,
-                                    ));
-                              },
-                              child: DetailsEditTab(
-                                  EditTabName: 'Check Availability',
-                                  icon: Icon(Icons.face, color: Colors.white)),
-                            ),
-                          ],
+                      children: [
+
+                        InkWell(
+                          onTap: () {
+                            Get.off(() => DoctorProfile(
+                                  index: 0,
+                                ));
+                          },
+                          child: DetailsEditTab(
+                              EditTabName: 'Personal Information',
+                              icon: Icon(Icons.person, color: Colors.white)),
                         ),
-                      ),
-                    ],
+                        InkWell(
+                          onTap: () {
+                            Get.off(() => DoctorProfile(
+                                  index: 1,
+                                ));
+                          },
+                          child: DetailsEditTab(
+                              EditTabName: 'Professional Details',
+                              icon: Icon(Icons.medical_services,
+                                  color: Colors.white)),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Get.off(() => DoctorProfile(
+                                  index: 2,
+                                ));
+                          },
+                          child: DetailsEditTab(
+                              EditTabName: 'My referred Patients',
+                              icon: Icon(Icons.medication,
+                                  color: Colors.white)),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Get.off(() => DoctorProfile(
+                                  index: 3,
+                                ));
+                          },
+                          child: DetailsEditTab(
+                              EditTabName: 'Check Availability',
+                              icon: Icon(Icons.face, color: Colors.white)),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 TextButton(
