@@ -11,6 +11,7 @@ class FormAddInput extends StatelessWidget {
       this.readOnly,
       this.onTap,
       this.isImage = false,
+        this.decoration,
       this.onChanged})
       : super(key: key);
   final String textLabel;
@@ -23,6 +24,7 @@ class FormAddInput extends StatelessWidget {
   final VoidCallback? onTap;
   final ValueSetter<String>? onChanged;
   final bool isImage;
+  final InputDecoration? decoration;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class FormAddInput extends StatelessWidget {
         onTap: onTap,
         onChanged: onChanged,
         controller: textEditingController,
-        decoration: InputDecoration(
+        decoration: decoration ?? InputDecoration(
           suffixIcon: isImage ? Icon(Icons.image) : null,
           fillColor: Color.fromRGBO(239, 245, 255, 1),
           filled: true,

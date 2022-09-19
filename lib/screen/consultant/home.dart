@@ -4,6 +4,7 @@ import 'package:mukh/components/CardList.dart';
 import 'package:mukh/components/CardWithDate.dart';
 import 'package:mukh/components/SectionHeading.dart';
 import 'package:mukh/models/doctor.dart';
+import 'package:mukh/screen/LoginScreen.dart';
 import 'package:mukh/screen/consultant/allDoctors.dart';
 import 'package:mukh/screen/consultant/allPatients.dart';
 import 'package:mukh/screen/patient/profile.dart';
@@ -15,6 +16,7 @@ import '../../utils/get_patient/getAllPatients.dart';
 import '../../utils/storeAccountDetails.dart';
 import 'profile.dart';
 
+import 'package:mukh/utils/token/removeToken.dart';
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
   final doctorName = "Atif Aslam";
@@ -26,6 +28,13 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    // return Container(
+    //   child: ElevatedButton(
+    //     onPressed: () {
+    //       removeToken().then((value) => Get.offAll(() => LoginScreen()));
+    //     }, child: Text("Logout"),
+    //   ),
+    // );
     return SafeArea(
         child: FutureBuilder(
             future: Account.instance.getAccDetails(),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mukh/AppConstants/constant.dart';
+import 'package:mukh/controller/AuthController.dart';
 import 'package:mukh/screen/RegisterScreen.dart';
 import 'package:mukh/screen/consultant/landingPage.dart';
 import '../AppConstants/constant.dart';
@@ -16,12 +17,13 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   late final TextEditingController _email, _password;
-
+  late final _authController;
   @override
   void initState() {
     super.initState();
     _email = TextEditingController();
     _password = TextEditingController();
+    _authController = Get.put(AuthController());
   }
 
   @override
@@ -110,17 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () async {
-                    int responseCode =
-                        await login(context, _email.text, _password.text);
-                    if (responseCode == 200) {
-                      Get.off(() => DoctorLandingPage());
-                    } else {
-                      Get.snackbar('Error!',
-                          'Invalid Credentials or Something went wrong',
-                          snackPosition: SnackPosition.BOTTOM);
-                    }
-                  },
+                  onPressed: () => _authController.postLogin(_email.text, _password.text),
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: const Text('Sign In',
@@ -139,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 10),
                 GestureDetector(
-                  onTap: () => Get.to(RegisterScreen()),
+                  onTap: () => Get.to(() => RegisterScreen()),
                   child: RichText(
                       text: TextSpan(
                           text: "Don't have an account? ",

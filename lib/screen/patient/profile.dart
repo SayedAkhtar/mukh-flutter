@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mukh/controller/PatientController.dart';
 import 'package:mukh/screen/patient/editScreens/medicines.dart';
 import 'package:mukh/screen/patient/profile/personalInfo.dart';
 import 'package:mukh/screen/patient/profile/dentalHistory.dart';
@@ -27,15 +28,21 @@ class _PatientProfileState extends State<PatientProfile>
     with TickerProviderStateMixin {
   TabController? _tabController;
 
+  final _patientController = Get.put(PatientController());
+
   @override
   void initState() {
     super.initState();
     _tabController =
         TabController(initialIndex: widget.index!, length: 6, vsync: this);
+    _patientController.getOnePatient(widget.id);
   }
+
+
 
   @override
   Widget build(BuildContext context) {
+    print(_patientController.currentPatient.value.address);
     return SafeArea(
       child: FutureBuilder(
           future: getOnePatient(widget.id),
@@ -76,6 +83,7 @@ class _PatientProfileState extends State<PatientProfile>
                                 return [
                                   PopupMenuItem(
                                       child: GestureDetector(
+                                        onTap: _patientController.showEditDetailsSelection,
                                     child: Text("Edit Details"),
                                   )),
                                   PopupMenuItem(

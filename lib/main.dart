@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mukh/AppConstants/constant.dart';
+import 'package:mukh/screen/patient/editScreens/updateNewMedicine.dart';
 import 'package:mukh/splash.dart';
 
 void main() {
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Sansation',
           appBarTheme: AppBarTheme(backgroundColor: Constant.mainColor)),
       home: SplashScreen(),
+      // home: UpdateNewMedicine(),
     );
   }
 }

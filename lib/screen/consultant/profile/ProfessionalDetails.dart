@@ -8,17 +8,21 @@ class ProfessionalDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(profDetails);
     final double _width = MediaQuery.of(context).size.width;
 
-    String _qualifications = '', _languages = '';
-
-    for (int i = 0; i < profDetails['qualifications'].length; i++) {
-      _qualifications += '; ' + profDetails['qualifications'][i];
+    String _qualifications = 'No Data', _languages = 'No Data';
+    if(profDetails['qualifications'] != null){
+      for (int i = 0; i < profDetails['qualifications'].length; i++) {
+        _qualifications += '; ' + profDetails['qualifications'][i];
+      }
+    }
+    if(profDetails['languages'] != null){
+      for (int i = 0; i < profDetails['languages'].length; i++) {
+        _languages += '; ' + profDetails['languages'][i];
+      }
     }
 
-    for (int i = 0; i < profDetails['languages'].length; i++) {
-      _languages += '; ' + profDetails['languages'][i];
-    }
 
     return Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),

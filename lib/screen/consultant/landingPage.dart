@@ -60,6 +60,7 @@ class _DoctorLandingPageState extends State<DoctorLandingPage> {
           onTap: (index) {
             setState(() {
               _selectedTab = index;
+
             });
           }),
     ));

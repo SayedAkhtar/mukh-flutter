@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -79,17 +81,29 @@ class _RegisterSelectionState extends State<RegisterSelection> {
                         ),
                         child: TextButton(
                           onPressed: () async {
-                            final responseCode = await signup(
-                                context,
-                                widget.email,
-                                widget.password,
-                                'specialist',
-                                widget.firstName,
-                                widget.lastName);
+                            Get.defaultDialog(
+                              title: "Processing your request",
+                              content: CircularProgressIndicator(),
+                              barrierDismissible: false
+                            );
+                            try{
+                              final responseCode = await signup(
+                                  context,
+                                  widget.email,
+                                  widget.password,
+                                  'specialist',
+                                  widget.firstName,
+                                  widget.lastName);
 
-                            if (responseCode == 201) {
-                              Get.offAll(() => DoctorLandingPage());
+                              if (responseCode == 201) {
+                                Get.offAll(() => DoctorLandingPage());
+                              }
+                            }catch(e){
+                              Get.back();
+                              Get.snackbar("Error", e.toString(), snackPosition: SnackPosition.BOTTOM);
+                              print(e.toString());
                             }
+
                           },
                           child: const Center(
                             child: Text(

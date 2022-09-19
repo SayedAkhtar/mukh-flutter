@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:mukh/models/accountFields.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
@@ -47,8 +48,10 @@ class Account {
   }
 
   Future<void> storeAccountDetails(var result) async {
-    final db = await instance.database;
-
+    Database db = await instance.database;
+    if(!db.isOpen){
+      db = await _initDB();
+    }
     await db.insert(account, AccountFields.toJson(result));
   }
 

@@ -31,5 +31,6 @@ class Patient {
       required this.deletedAt,
       this.image = '',
       required this.bloodGroup,
-      required this.gender});
+      required this.gender}
+      );
 }

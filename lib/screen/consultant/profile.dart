@@ -43,8 +43,9 @@ class _DoctorProfileState extends State<DoctorProfile>
     return SafeArea(
       child: FutureBuilder(
         future: getOneDoctor(widget.id ?? ''),
-        builder: (context, snapshot) {
-          print(snapshot.data);
+        builder: (context, AsyncSnapshot<Map> snapshot) {
+          Map? data = snapshot.data;
+          // print(snapshot.data);
           if (snapshot.hasData) {
             if (snapshot.data == null) return SizedBox.shrink();
             return Scaffold(
@@ -211,7 +212,7 @@ class _DoctorProfileState extends State<DoctorProfile>
                   ),
                   ProfessionalDetails(
                       profDetails:
-                          (snapshot.data as Map)['professional_details']),
+                      data!['professional_details']),
                   ReferStatus(),
                   Availability(
                       profDetails:
@@ -248,131 +249,3 @@ class _DoctorProfileState extends State<DoctorProfile>
     );
   }
 }
-
-/*
-* Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 24.0),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: _width * 0.4,
-                          child: Text(
-                            "First Name",
-                            softWrap: true,
-                            style: TextStyle(
-                                fontSize: 18.0, fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                        Container(
-                          child: Text("Sayed", softWrap: true,style: TextStyle(
-                              fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.black38),),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.only(top: 24.0),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: _width * 0.4,
-                          child: Text(
-                            "Last Name",
-                            softWrap: true,
-                            style: TextStyle(
-                                fontSize: 18.0, fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                        Container(
-                          child: Text("Sayed", softWrap: true,style: TextStyle(
-                              fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.black38),),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 24.0),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: _width * 0.4,
-                          child: Text(
-                            "Last Name",
-                            softWrap: true,
-                            style: TextStyle(
-                                fontSize: 18.0, fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                        Container(
-                          child: Text("Sayed", softWrap: true,style: TextStyle(
-                              fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.black38),),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 24.0),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: _width * 0.4,
-                          child: Text(
-                            "Last Name",
-                            softWrap: true,
-                            style: TextStyle(
-                                fontSize: 18.0, fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                        Container(
-                          child: Text("Sayed", softWrap: true,style: TextStyle(
-                              fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.black38),),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 24.0),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: _width * 0.4,
-                          child: Text(
-                            "Last Name",
-                            softWrap: true,
-                            style: TextStyle(
-                                fontSize: 18.0, fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                        Container(
-                          child: Text("Sayed", softWrap: true,style: TextStyle(
-                              fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.black38),),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 24.0),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: _width * 0.4,
-                          child: Text(
-                            "Last Name",
-                            softWrap: true,
-                            style: TextStyle(
-                                fontSize: 18.0, fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                        Container(
-                          child: Text("Sayed", softWrap: true,style: TextStyle(
-                              fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.black38),),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                ],
-              ),*/
