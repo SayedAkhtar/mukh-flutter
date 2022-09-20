@@ -38,8 +38,6 @@ class _PatientProfileState extends State<PatientProfile>
     _patientController.getOnePatient(widget.id);
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     print(_patientController.currentPatient.value.address);
@@ -83,7 +81,7 @@ class _PatientProfileState extends State<PatientProfile>
                                 return [
                                   PopupMenuItem(
                                       child: GestureDetector(
-                                        onTap: _patientController.showEditDetailsSelection,
+                                    onTap: () => { Get.back(), _patientController.showEditDetailsSelection() },
                                     child: Text("Edit Details"),
                                   )),
                                   PopupMenuItem(

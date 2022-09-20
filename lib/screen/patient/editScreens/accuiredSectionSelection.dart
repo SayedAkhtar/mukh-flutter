@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/components/FormAddInput.dart';
-import 'package:mukh/screen/patient/editScreens/congenitalDentalRecord.dart';
+import 'package:mukh/screen/patient/editScreens/accuiredDentalRecord.dart';
 
-class CongenitalSectionSelection extends StatelessWidget {
-  CongenitalSectionSelection({Key? key}) : super(key: key);
+class AccuiredSectionSelection extends StatelessWidget {
+
+  AccuiredSectionSelection({Key? key}) : super(key: key);
   InputDecoration _inputDecoration(String label) {
     return InputDecoration(
       labelText: label,
@@ -27,7 +28,7 @@ class CongenitalSectionSelection extends StatelessWidget {
   }
 
   TextEditingController _condition =
-      new TextEditingController(text: "Congenital");
+      new TextEditingController(text: "Acquired");
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +89,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(
-                                () => CongenitalDentalRecords("first_section"));
+                                () => AccuiredDentalRecords("first_section"));
                           },
                           child: Container(
                             height: 144,
@@ -103,7 +104,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(() =>
-                                CongenitalDentalRecords("second_section"));
+                                AccuiredDentalRecords("second_section"));
                           },
                           child: Container(
                             height: 144,
@@ -118,7 +119,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(
-                                () => CongenitalDentalRecords("third_section"));
+                                () => AccuiredDentalRecords("third_section"));
                           },
                           child: Container(
                             height: 144,
@@ -134,7 +135,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(() =>
-                                CongenitalDentalRecords("fourth_section"));
+                                AccuiredDentalRecords("fourth_section"));
                           },
                           child: Container(
                             height: 58,
@@ -149,7 +150,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(
-                                () => CongenitalDentalRecords("fifth_section"));
+                                () => AccuiredDentalRecords("fifth_section"));
                           },
                           child: Container(
                             height: 58,
@@ -164,7 +165,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(
-                                () => CongenitalDentalRecords("sixth_section"));
+                                () => AccuiredDentalRecords("sixth_section"));
                           },
                           child: Container(
                             height: 58,
@@ -180,7 +181,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(() =>
-                                CongenitalDentalRecords("seventh_section"));
+                                AccuiredDentalRecords("seventh_section"));
                           },
                           child: Container(
                             height: 68,
@@ -195,7 +196,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(
-                                () => CongenitalDentalRecords("eight_section"));
+                                () => AccuiredDentalRecords("eight_section"));
                           },
                           child: Container(
                             height: 68,
@@ -210,7 +211,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(
-                                () => CongenitalDentalRecords("ninth_section"));
+                                () => AccuiredDentalRecords("ninth_section"));
                           },
                           child: Container(
                             height: 68,
@@ -240,7 +241,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(
-                                () => CongenitalDentalRecords("tenth_section"));
+                                () => AccuiredDentalRecords("tenth_section"));
                           },
                           child: Container(
                             height: 114,
@@ -255,7 +256,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(() =>
-                                CongenitalDentalRecords("eleventh_section"));
+                                AccuiredDentalRecords("eleventh_section"));
                           },
                           child: Container(
                             height: 114,
@@ -270,7 +271,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(() =>
-                                CongenitalDentalRecords("twelveth_section"));
+                                AccuiredDentalRecords("twelveth_section"));
                           },
                           child: Container(
                             height: 114,
@@ -286,7 +287,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(() =>
-                                CongenitalDentalRecords("thirteenth_section"));
+                                AccuiredDentalRecords("thirteenth_section"));
                           },
                           child: Container(
                             height: 38,
@@ -301,7 +302,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(() =>
-                                CongenitalDentalRecords("fourteenth_section"));
+                                AccuiredDentalRecords("fourteenth_section"));
                           },
                           child: Container(
                             height: 38,
@@ -316,7 +317,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(() =>
-                                CongenitalDentalRecords("fifteenth_section"));
+                                AccuiredDentalRecords("fifteenth_section"));
                           },
                           child: Container(
                             height: 38,
@@ -332,7 +333,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(() =>
-                                CongenitalDentalRecords("sisteenth_section"));
+                                AccuiredDentalRecords("sisteenth_section"));
                           },
                           child: Container(
                             height: 68,
@@ -347,7 +348,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(() =>
-                                CongenitalDentalRecords("seventh_section"));
+                                AccuiredDentalRecords("seventh_section"));
                           },
                           child: Container(
                             height: 68,
@@ -362,7 +363,7 @@ class CongenitalSectionSelection extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.to(() =>
-                                CongenitalDentalRecords("eighteenth_section"));
+                                AccuiredDentalRecords("eighteenth_section"));
                           },
                           child: Container(
                             height: 68,

@@ -56,7 +56,7 @@ class SelectionScreen extends StatelessWidget {
                       child: CircleAvatar(
                         radius: 55,
                         backgroundImage: NetworkImage(
-                          Constant.baseUrl + 'storage/' + 'default.jpg',
+                          Constant.baseUrl + 'storage/avatars/' + 'default.png',
                         ),
                       ),
                     ),

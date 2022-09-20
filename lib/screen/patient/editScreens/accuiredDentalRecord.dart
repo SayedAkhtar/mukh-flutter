@@ -3,16 +3,16 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/components/FormAddInput.dart';
-
-class AcquiredDentalRecords extends StatefulWidget {
-  const AcquiredDentalRecords({Key? key, @required this.type}) : super(key: key);
-  final String? type;
-
+import 'package:mukh/controller/AcquiredController.dart';
+import 'package:mukh/models/AcquiredDentalModel.dart';
+class AccuiredDentalRecords extends StatefulWidget {
+  const AccuiredDentalRecords(String this.section, {Key? key}) : super(key: key);
+  final String section;
   @override
-  State<AcquiredDentalRecords> createState() => _AcquiredDentalRecordsState();
+  State<AccuiredDentalRecords> createState() => _AccuiredDentalRecordsState();
 }
 
-class _AcquiredDentalRecordsState extends State<AcquiredDentalRecords> {
+class _AccuiredDentalRecordsState extends State<AccuiredDentalRecords> {
   final ImagePicker _picker = ImagePicker();
 
   late XFile photo;
@@ -27,8 +27,7 @@ class _AcquiredDentalRecordsState extends State<AcquiredDentalRecords> {
       _burn,
       _surgery,
       _radiation,
-      _swelling,
-      _image;
+      _swelling;
 
 
   @override
@@ -44,7 +43,6 @@ class _AcquiredDentalRecordsState extends State<AcquiredDentalRecords> {
     _surgery = TextEditingController();
     _radiation = TextEditingController();
     _swelling = TextEditingController();
-    _image = TextEditingController();
     _condition.text = "Acquired";
   }
 
@@ -104,165 +102,81 @@ class _AcquiredDentalRecordsState extends State<AcquiredDentalRecords> {
                 textInputType: TextInputType.text,
                 margin: EdgeInsets.only(bottom: 10),
                   decoration: _inputDecoration('Condition *'),
-                readOnly: true,
+                  readOnly:true
               ),
               FormAddInput(
-                'Areca Nut/ Tobacco',
+                'Areca Nut/Tobacco',
                 textEditingController: _tobacco,
                 textInputType: TextInputType.number,
                 margin: EdgeInsets.only(bottom: 10),
-                decoration: _inputDecoration('Ear Deformity'),
+                decoration: _inputDecoration('Areca Nut/Tobacco'),
               ),
               FormAddInput(
                 'Trauma',
                 textEditingController: _trauma,
                 textInputType: TextInputType.number,
                 margin: EdgeInsets.only(bottom: 10),
-                decoration: _inputDecoration('Nose Deformity'),
+                decoration: _inputDecoration('Trauma'),
               ),
               FormAddInput(
                 'Pain',
                 textEditingController: _pain,
                 textInputType: TextInputType.number,
                 margin: EdgeInsets.only(bottom: 10),
-                decoration: _inputDecoration('Micrognathia'),
+                decoration: _inputDecoration('Pain'),
               ),
               FormAddInput(
                 'Discharge',
                 textEditingController: _discharge,
                 textInputType: TextInputType.number,
                 margin: EdgeInsets.only(bottom: 10),
-                decoration: _inputDecoration('Forehead'),
+                decoration: _inputDecoration('Discharge'),
               ),
               FormAddInput(
                 'Burn',
                 textEditingController: _burn,
                 textInputType: TextInputType.number,
                 margin: EdgeInsets.only(bottom: 10),
-                decoration: _inputDecoration('Teeth'),
+                decoration: _inputDecoration('Burn'),
               ),
               FormAddInput(
                 'Surgery',
                 textEditingController: _surgery,
                 textInputType: TextInputType.number,
                 margin: EdgeInsets.only(bottom: 10),
-                decoration: _inputDecoration('Cleft'),
+                decoration: _inputDecoration('Surgery'),
               ),
               FormAddInput(
                 'Radiation',
                 textEditingController: _radiation,
                 textInputType: TextInputType.number,
                 margin: EdgeInsets.only(bottom: 10),
-                decoration: _inputDecoration('Hair'),
+                decoration: _inputDecoration('Radiation'),
               ),
               FormAddInput(
                 'Swelling',
                 textEditingController: _swelling,
                 textInputType: TextInputType.number,
                 margin: EdgeInsets.only(bottom: 10),
-                decoration: _inputDecoration('Skin'),
+                decoration: _inputDecoration('Swelling'),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 18.0, horizontal: 9.0),
-                child: Text('Upload Documents', style: TextStyle(color: Colors.black26),),
-              ),
-              FormAddInput(
-                'Type of documents',
-                textEditingController: _image,
-                textInputType: TextInputType.text,
-                margin: EdgeInsets.only(bottom: 10),
-                decoration: _inputDecoration('Type of documents'),
-              ),
-              FormAddInput(
-                'Image *',
-                readOnly: true,
-                isImage: true,
-                onTap: () async {
-                  showModalBottomSheet(
-                      context: context,
-                      builder: (_) {
-                        return SizedBox(
-                          height: MediaQuery.of(context).size.height / 4,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                    10.0, 20.0, 10.0, 0.0),
-                                child: Text(
-                                  'Capture or pick image',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 24.0),
-                                ),
-                              ),
-                              Expanded(
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      IconButton(
-                                          onPressed: () async {
-                                            Navigator.pop(context);
-                                            await _picker
-                                                .pickImage(
-                                              source: ImageSource.camera,
-                                              maxHeight: 480,
-                                              maxWidth: 480,
-                                              imageQuality: 50,
-                                            )
-                                                .then((value) {
-                                              if (value != null) {
-                                                _image.text = value.path;
-                                                photo = value;
-                                              }
-                                            });
-                                          },
-                                          icon: Icon(
-                                            Icons.camera,
-                                            size: 56.0,
-                                            color: Constant.mainColor,
-                                          )),
-                                      IconButton(
-                                          onPressed: () async {
-                                            Navigator.pop(context);
-                                            await _picker
-                                                .pickImage(
-                                                    source:
-                                                        ImageSource.gallery,
-                                                    maxHeight: 480,
-                                                    maxWidth: 480,
-                                                    imageQuality: 50)
-                                                .then((value) {
-                                              if (value != null) {
-                                                _image.text = value.path;
-                                                photo = value;
-                                              }
-                                              return null;
-                                            });
-                                          },
-                                          icon: Icon(
-                                            Icons.photo_library,
-                                            size: 56.0,
-                                            color: Constant.mainColor,
-                                          )),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      });
-                },
-                textEditingController: _image,
-                margin: EdgeInsets.only(bottom: 10),
-              ),
+
               ElevatedButton(
                 onPressed: () async {
-
+                  AcquiredDentalModel ac = AcquiredDentalModel(
+                      dentalRecordGroupId: null,
+                      facePart: widget.section,
+                      tobacco: _tobacco.text,
+                    trauma: _trauma.text,
+                    pain: _pain.text,
+                    discharge: _discharge.text,
+                    burn: _burn.text,
+                    surgery: _surgery.text,
+                    radiation: _radiation.text,
+                    swelling: _swelling.text,
+                  );
+                  print(ac.toJson());
+                  AcquiredController().addOne(ac);
                 },
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,

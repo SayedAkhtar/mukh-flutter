@@ -3,9 +3,9 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/models/patient.dart';
-import 'package:mukh/screen/patient/editScreens/CongenitalSectionSelection.dart';
-import 'package:mukh/screen/patient/editScreens/accuiredDentalRecord.dart';
+import 'package:mukh/screen/patient/editScreens/accuiredSectionSelection.dart';
 import 'package:mukh/screen/patient/editScreens/congenitalDentalRecord.dart';
+import 'package:mukh/screen/patient/editScreens/accuiredDentalRecord.dart';
 import 'package:mukh/screen/patient/editScreens/selection.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -61,10 +61,11 @@ class PatientController extends GetxController{
 
   void showDentalRecords(type){
     if(type == "Acquired"){
-      Get.to(() => AcquiredDentalRecords(type: ""));
+      Get.to(() => AccuiredSectionSelection());
+
     }
     if(type == "Congenital"){
-      Get.to(() => CongenitalSectionSelection());
+      Get.to(() => CongenitalDentalRecords(type: ""));
     }
     if(type == "Both"){
       Get.snackbar("Un Implemented", "This route has not yet been implemented");

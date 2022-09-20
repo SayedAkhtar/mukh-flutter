@@ -3,20 +3,26 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/components/FormAddInput.dart';
+import 'package:mukh/controller/CongenitalController.dart';
+import 'package:mukh/controller/DentalRecordGroupController.dart';
+import 'package:mukh/models/CongenitalDentalModel.dart';
+
+import '../../../controller/PatientController.dart';
 
 class CongenitalDentalRecords extends StatefulWidget {
-  const CongenitalDentalRecords(String this.section, {Key? key}) : super(key: key);
-  final String? section;
+  const CongenitalDentalRecords({Key? key, @required this.type}) : super(key: key);
+  final String? type;
+
   @override
   State<CongenitalDentalRecords> createState() => _CongenitalDentalRecordsState();
 }
 
 class _CongenitalDentalRecordsState extends State<CongenitalDentalRecords> {
   final ImagePicker _picker = ImagePicker();
+  PatientController inst = Get.find();
 
   late XFile photo;
 
-  // String dropdownValue = 'AB+';
   late final TextEditingController _mouthOpening,
       _condition,
       _earDeformity,
@@ -73,6 +79,7 @@ class _CongenitalDentalRecordsState extends State<CongenitalDentalRecords> {
 
   @override
   Widget build(BuildContext context) {
+    print(inst.currentPatient.value.id);
     return SafeArea(
         child: Scaffold(
       resizeToAvoidBottomInset: true,
@@ -101,10 +108,10 @@ class _CongenitalDentalRecordsState extends State<CongenitalDentalRecords> {
                 decoration: _inputDecoration('Mouth Opening In (mm) *'),
               ),
               FormAddInput(
-                'Condition *',
-                textEditingController: _condition,
-                textInputType: TextInputType.text,
-                margin: EdgeInsets.only(bottom: 10),
+                  'Condition *',
+                  textEditingController: _condition,
+                  textInputType: TextInputType.text,
+                  margin: EdgeInsets.only(bottom: 10),
                   decoration: _inputDecoration('Condition *'),
                   readOnly:true
               ),
@@ -171,106 +178,23 @@ class _CongenitalDentalRecordsState extends State<CongenitalDentalRecords> {
                 margin: EdgeInsets.only(bottom: 10),
                 decoration: _inputDecoration('Digits'),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 18.0, horizontal: 9.0),
-                child: Text('Upload Documents', style: TextStyle(color: Colors.black26),),
-              ),
-              FormAddInput(
-                'Type of documents',
-                textEditingController: _image,
-                textInputType: TextInputType.text,
-                margin: EdgeInsets.only(bottom: 10),
-                decoration: _inputDecoration('Type of documents'),
-              ),
-              FormAddInput(
-                'Image *',
-                readOnly: true,
-                isImage: true,
-                onTap: () async {
-                  showModalBottomSheet(
-                      context: context,
-                      builder: (_) {
-                        return SizedBox(
-                          height: MediaQuery.of(context).size.height / 4,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                    10.0, 20.0, 10.0, 0.0),
-                                child: Text(
-                                  'Capture or pick image',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 24.0),
-                                ),
-                              ),
-                              Expanded(
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      IconButton(
-                                          onPressed: () async {
-                                            Navigator.pop(context);
-                                            await _picker
-                                                .pickImage(
-                                              source: ImageSource.camera,
-                                              maxHeight: 480,
-                                              maxWidth: 480,
-                                              imageQuality: 50,
-                                            )
-                                                .then((value) {
-                                              if (value != null) {
-                                                _image.text = value.path;
-                                                photo = value;
-                                              }
-                                            });
-                                          },
-                                          icon: Icon(
-                                            Icons.camera,
-                                            size: 56.0,
-                                            color: Constant.mainColor,
-                                          )),
-                                      IconButton(
-                                          onPressed: () async {
-                                            Navigator.pop(context);
-                                            await _picker
-                                                .pickImage(
-                                                    source:
-                                                        ImageSource.gallery,
-                                                    maxHeight: 480,
-                                                    maxWidth: 480,
-                                                    imageQuality: 50)
-                                                .then((value) {
-                                              if (value != null) {
-                                                _image.text = value.path;
-                                                photo = value;
-                                              }
-                                              return null;
-                                            });
-                                          },
-                                          icon: Icon(
-                                            Icons.photo_library,
-                                            size: 56.0,
-                                            color: Constant.mainColor,
-                                          )),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      });
-                },
-                textEditingController: _image,
-                margin: EdgeInsets.only(bottom: 10),
-              ),
               ElevatedButton(
-                onPressed: () async {},
+                onPressed: () async {
+                  CongenitalDentalModel cdm = CongenitalDentalModel(
+                    earDeformity: _earDeformity.text,
+                    eyeDeformity: _eyeDeformity.text,
+                    noseDeformity: _noseDeformity.text,
+                    micrognathia: _micrognathia.text,
+                    forehead: _forehead.text,
+                    teeth: _teeth.text,
+                    cleft: _cleft.text,
+                    hair: _cleft.text,
+                    skin: _skin.text,
+                    digits: _digits.text,
+                  );
+                  DentalRecordGroupController().addOne(_mouthOpening.text, _condition.text, 51);
+                  CongenitalController().addOne(cdm);
+                },
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: const Text('Update',

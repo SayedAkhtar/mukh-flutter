@@ -7,6 +7,11 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'storeAccountDetails.dart';
 
+// Future<int> checkSignup(BuildContext context, String email) async {
+//
+// }
+
+
 Future<int> signup(BuildContext context, String email, String pass, String type,
     String firstName, String lastName) async {
   final response = await http.post(
@@ -23,7 +28,7 @@ Future<int> signup(BuildContext context, String email, String pass, String type,
       "type": type
     },
   );
-
+  print(response.body);
   if (response.statusCode == 201) {
     var result = json.decode(response.body);
     String token = result['token'];
