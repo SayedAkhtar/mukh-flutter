@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mukh/AppConstants/constant.dart';
 import 'package:mukh/components/FormAddInput.dart';
+import 'package:mukh/controller/PatientController.dart';
 class Medicine {
   String name;
   String from;
@@ -19,7 +20,7 @@ class UpdateNewMedicine extends StatefulWidget {
 class _UpdateNewMedicineState extends State<UpdateNewMedicine> {
   late final TextEditingController _name, _start, _end;
   late List<Medicine> _extraDetailList;
-
+  PatientController patient = Get.find();
   @override
   void initState() {
     super.initState();

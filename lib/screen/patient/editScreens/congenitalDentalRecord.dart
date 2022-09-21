@@ -79,7 +79,6 @@ class _CongenitalDentalRecordsState extends State<CongenitalDentalRecords> {
 
   @override
   Widget build(BuildContext context) {
-    print(inst.currentPatient.value.id);
     return SafeArea(
         child: Scaffold(
       resizeToAvoidBottomInset: true,
@@ -192,8 +191,19 @@ class _CongenitalDentalRecordsState extends State<CongenitalDentalRecords> {
                     skin: _skin.text,
                     digits: _digits.text,
                   );
-                  DentalRecordGroupController().addOne(_mouthOpening.text, _condition.text, 51);
-                  CongenitalController().addOne(cdm);
+                  DentalRecordGroupController().addOne(_mouthOpening.text, _condition.text.toLowerCase(), int.parse(inst.currentPatient.value.id))
+                  .then((value){
+                    if(value > 0){
+                      CongenitalController().addOne(cdm, value)
+                          .then((value) => {
+                        if(value){
+                          Get.defaultDialog(title: "Success", content: Text("Data updated successfully."))
+                        }
+                      });
+                    }
+                  });
+
+
                 },
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,

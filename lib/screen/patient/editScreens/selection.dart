@@ -6,6 +6,7 @@ import 'package:mukh/screen/consultant/profile/PersonalInformation.dart';
 import 'package:mukh/screen/editPersonalInformation.dart';
 import 'package:mukh/screen/patient/editScreens/others.dart';
 import 'package:mukh/screen/patient/editScreens/personalInfo.dart';
+import 'package:mukh/screen/patient/editScreens/updateMedicalDetails.dart';
 import 'package:mukh/screen/patient/editScreens/updateNewMedicine.dart';
 
 import '../../../AppConstants/constant.dart';
@@ -111,7 +112,7 @@ class SelectionScreen extends StatelessWidget {
                   children: [
                     SelectionCard(() => Get.to(() => EditPersonalInformation()), 'person.png',
                         'Personal\nInformation'),
-                    SelectionCard(() => Get.snackbar("Error", "Feature not yet implemented"), 'medical.png',
+                    SelectionCard(() => Get.to(() => UpdateMedicalDetails()), 'medical.png',
                         'Upload\nMedical Details'),
                     SelectionCard(() => Get.to(() => UpdateNewMedicine()), 'medicine.png',
                         'Update New\nMedicine'),
